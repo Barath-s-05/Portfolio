@@ -37,7 +37,7 @@ const Header = () => {
     { name: "Contact", href: "#contact" },
   ];
 
-  const resumeLink = "/Resume.pdf"; // Link to the resume page
+  const resumeLink = "/resume.pdf"; // Link to the resume page
 
   return (
     <>
