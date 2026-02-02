@@ -1,56 +1,32 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-type Repo = {
-  id: number;
-  name: string;
-  html_url: string;
-  description: string | null;
-  fork: boolean;
-};
-
-const projectLiveLinks: Record<string, string> = {
-  "Disease-Detection": "https://disease-detection-ten.vercel.app/",
-  "Hotel-Management-System": "", // add later
-  "Credit-Fraud-Detection": ""   // add later
-};
+const projects = [
+  {
+    title: "Disease Detection",
+    description: "Detecting diseases using symptoms with machine learning models.",
+    tech: ["Python", "Machine Learning", "Scikit-learn", "Flask API", "React", "Pickle Models"],
+    github: "https://github.com/Barath-s-05/Disease-Detection",
+    live: "https://disease-detection-ten.vercel.app/"
+  },
+  {
+    title: "Hotel Management System",
+    description: "DBMS-based hotel system handling bookings, billing, and services.",
+    tech: ["Python", "SQLite", "CLI Application", "DBMS Concepts"],
+    github: "https://github.com/Barath-s-05/Hotel-Management-System",
+    live: "" // add later if deployed
+  },
+  {
+    title: "Credit Fraud Detection",
+    description: "ML system that detects fraudulent credit card transactions.",
+    tech: ["Python", "Machine Learning", "Pandas", "Scikit-learn", "Data Preprocessing"],
+    github: "https://github.com/Barath-s-05/Credit-Fraud-Detection",
+    live: "" // add later if deployed
+  }
+];
 
 const Projects = () => {
-  const [repos, setRepos] = useState<Repo[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchRepos = async () => {
-      try {
-        const res = await fetch("https://api.github.com/users/Barath-s-05/repos");
-        const data: Repo[] = await res.json();
-
-        const allowedProjects = [
-          "Disease-Detection",
-          "Hotel-Management-System",
-          "Credit-Fraud-Detection"
-        ];
-
-        const filtered = data.filter(
-          (repo) =>
-            !repo.fork &&
-            repo.description &&
-            allowedProjects.includes(repo.name)
-        );
-
-        setRepos(filtered);
-      } catch (err) {
-        console.error("Failed to load repos", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchRepos();
-  }, []);
-
   return (
     <section id="projects" className="py-20 px-8 md:px-16 lg:px-32">
       <div className="max-w-6xl mx-auto">
@@ -63,60 +39,57 @@ const Projects = () => {
           My <span className="neon-text">Projects</span>
         </motion.h2>
 
-        {loading ? (
-          <p className="text-center text-gray-400">Loading projects...</p>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {repos.map((repo, index) => (
-              <motion.div
-                key={repo.id}
-                className="glass rounded-2xl overflow-hidden border border-cyan-500/20 glass-hover group relative flex flex-col justify-between"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 * index }}
-                whileHover={{ y: -12, boxShadow: "0 0 25px rgba(0,238,255,0.25)" }}
-              >
-                {/* Preview Area */}
-                <div className="bg-gradient-to-br from-gray-800 to-gray-900 h-40 flex items-center justify-center">
-                  <p className="text-gray-500 text-sm">GitHub Repository</p>
-                </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.title}
+              className="glass rounded-2xl p-6 border border-cyan-500/20 glass-hover flex flex-col"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 * index }}
+              whileHover={{ y: -10, boxShadow: "0 0 25px rgba(0,238,255,0.25)" }}
+            >
+              <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+              <p className="text-gray-400 mb-4">{project.description}</p>
 
-                <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-xl font-bold mb-2 capitalize">
-                    {repo.name.replace(/-/g, " ")}
-                  </h3>
-                  <p className="text-gray-400 mb-4">{repo.description}</p>
+              {/* Tech Stack */}
+              <div className="flex flex-wrap gap-2 mb-6">
+                {project.tech.map((tech, i) => (
+                  <span
+                    key={i}
+                    className="text-xs px-3 py-1 rounded-full bg-cyan-900/30 text-cyan-300 border border-cyan-500/20"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
 
-                  {/* Buttons */}
-                  <div className="mt-auto flex gap-3">
-                    {/* View Code */}
-                    <a
-                      href={repo.html_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="glass px-4 py-2 rounded-lg border border-purple-500/30 text-purple-300 hover:bg-purple-500/10 hover:shadow-[0_0_15px_rgba(168,85,247,0.5)] transition text-sm"
-                    >
-                      View Code
-                    </a>
+              {/* Buttons */}
+              <div className="mt-auto flex gap-3">
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="glass px-4 py-2 rounded-lg border border-purple-500/30 text-purple-300 hover:bg-purple-500/10 hover:shadow-[0_0_15px_rgba(168,85,247,0.5)] transition text-sm"
+                >
+                  View Code
+                </a>
 
-                    {/* View Site */}
-                    {projectLiveLinks[repo.name] && (
-                      <a
-                        href={projectLiveLinks[repo.name]}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="glass px-4 py-2 rounded-lg border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/10 hover:shadow-[0_0_15px_rgba(0,238,255,0.5)] transition text-sm"
-                      >
-                        View Site
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        )}
+                {project.live && (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="glass px-4 py-2 rounded-lg border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/10 hover:shadow-[0_0_15px_rgba(0,238,255,0.5)] transition text-sm"
+                  >
+                    View Site
+                  </a>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
