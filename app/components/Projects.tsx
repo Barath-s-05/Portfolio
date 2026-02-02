@@ -23,7 +23,7 @@ const Projects = () => {
         const data: Repo[] = await res.json();
 
         const filtered = data
-          .filter(repo => !repo.fork && repo.description)
+          .filter((repo) => !repo.fork && repo.description)
           .slice(0, 6);
 
         setRepos(filtered);
@@ -46,7 +46,7 @@ const Projects = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Featured <span className="neon-text">Projects</span>
+          My <span className="neon-text">Projects</span>
         </motion.h2>
 
         {loading ? (
@@ -65,20 +65,32 @@ const Projects = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.1 * index }}
-                  whileHover={{ y: -12, boxShadow: "0 0 25px rgba(0,238,255,0.25)" }}
                 >
-                  {/* Glow sweep */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-r from-cyan-500/10 via-transparent to-blue-500/10"></div>
-
                   {/* Preview Area */}
-                  <div className="bg-gradient-to-br from-gray-800 to-gray-900 h-48 flex items-center justify-center">
-                    <p className="text-gray-500 text-sm">GitHub Repository</p>
+                  <div className="bg-gradient-to-br from-gray-800 to-gray-900 h-40 flex items-center justify-center text-gray-500">
+                    GitHub Repository
                   </div>
 
-                  {/* Hover Buttons */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                    <div className="flex gap-3">
+                  <div className="p-6 relative z-10">
+                    <h3 className="text-xl font-bold mb-2 capitalize">
+                      {repo.name.replace(/-/g, " ")}
+                    </h3>
+                    <p className="text-gray-400 mb-4">{repo.description}</p>
 
+                    {/* Tech Stack */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {techStack.map((tech, i) => (
+                        <span
+                          key={i}
+                          className="text-xs px-3 py-1 rounded-full bg-cyan-900/30 text-cyan-300 border border-cyan-500/20"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* 🔥 Action Buttons */}
+                    <div className="flex gap-3">
                       {/* View Code */}
                       <a
                         href={repo.html_url}
@@ -89,7 +101,7 @@ const Projects = () => {
                         View Code
                       </a>
 
-                      {/* View Site (only if exists) */}
+                      {/* View Live Site */}
                       {liveLink && (
                         <a
                           href={liveLink}
@@ -100,26 +112,6 @@ const Projects = () => {
                           View Site
                         </a>
                       )}
-
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-6 relative z-10">
-                    <h3 className="text-xl font-bold mb-2 capitalize">
-                      {repo.name.replace(/-/g, " ")}
-                    </h3>
-                    <p className="text-gray-400 mb-4">{repo.description}</p>
-
-                    <div className="flex flex-wrap gap-2">
-                      {techStack.map((tech, i) => (
-                        <span
-                          key={i}
-                          className="text-xs px-3 py-1 rounded-full bg-cyan-900/30 text-cyan-300 border border-cyan-500/20"
-                        >
-                          {tech}
-                        </span>
-                      ))}
                     </div>
                   </div>
                 </motion.div>

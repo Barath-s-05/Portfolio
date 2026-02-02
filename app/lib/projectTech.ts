@@ -22,8 +22,9 @@ export const projectTech: Record<string, string[]> = {
   ],
 };
 
+/* 🔥 Live deployed project links */
 export const projectLiveLinks: Record<string, string> = {
   "Disease-Detection": "https://disease-detection-ten.vercel.app/",
-  "Hotel-Management-System": "",
-  "Credit-Fraud-Detection": "",
+  "Hotel-Management-System": "", // add later
+  "Credit-Fraud-Detection": "",  // add later
 };
