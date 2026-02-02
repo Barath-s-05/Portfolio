@@ -1,26 +1,29 @@
 export const projectTech: Record<string, string[]> = {
-  "Hotel-Management-System": [
-    "Python",
-    "SQLite",
-    "CLI Application",
-    "DBMS Concepts"
-  ],
-
   "Disease-Detection": [
     "Python",
     "Machine Learning",
     "Scikit-learn",
     "Flask API",
     "React",
-    "Pickle Models"
+    "Pickle Models",
   ],
-
+  "Hotel-Management-System": [
+    "Python",
+    "SQLite",
+    "CLI Application",
+    "DBMS Concepts",
+  ],
   "Credit-Fraud-Detection": [
     "Python",
     "Machine Learning",
-    "Scikit-learn",
     "Pandas",
+    "Scikit-learn",
     "Data Preprocessing",
-    "Pickle Models"
   ],
+};
+
+export const projectLiveLinks: Record<string, string> = {
+  "Disease-Detection": "https://disease-detection-ten.vercel.app/",
+  "Hotel-Management-System": "",
+  "Credit-Fraud-Detection": "",
 };

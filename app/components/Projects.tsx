@@ -1,15 +1,47 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { projectTech, projectLiveLinks } from "@/app/lib/projectTech";
 
-const FeaturedProjects = () => {
+type Repo = {
+  id: number;
+  name: string;
+  html_url: string;
+  description: string | null;
+  fork: boolean;
+};
+
+const Projects = () => {
+  const [repos, setRepos] = useState<Repo[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchRepos = async () => {
+      try {
+        const res = await fetch("https://api.github.com/users/Barath-s-05/repos");
+        const data: Repo[] = await res.json();
+
+        const filtered = data
+          .filter(repo => !repo.fork && repo.description)
+          .slice(0, 6);
+
+        setRepos(filtered);
+      } catch (err) {
+        console.error("Failed to load repos", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchRepos();
+  }, []);
+
   return (
-    <section id="projects" className="py-24 px-8 md:px-16 lg:px-32 relative">
-      <div className="max-w-7xl mx-auto">
-
-        {/* Section Title */}
+    <section id="projects" className="py-20 px-8 md:px-16 lg:px-32">
+      <div className="max-w-6xl mx-auto">
         <motion.h2
-          className="text-4xl md:text-5xl font-bold text-center mb-20"
+          className="text-4xl font-bold mb-16 text-center"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -17,109 +49,87 @@ const FeaturedProjects = () => {
           Featured <span className="neon-text">Projects</span>
         </motion.h2>
 
-        {/* GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        {loading ? (
+          <p className="text-center text-gray-400">Loading projects...</p>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {repos.map((repo, index) => {
+              const techStack = projectTech[repo.name] || ["Various Technologies"];
+              const liveLink = projectLiveLinks[repo.name];
 
-          {/* 🧬 Disease Detection */}
-          <motion.div
-            className="glass rounded-2xl p-8 border border-cyan-500/20 hover:border-cyan-400/40 transition-all group"
-            whileHover={{ y: -10 }}
-          >
-            <div className="text-4xl mb-4">🧬</div>
+              return (
+                <motion.div
+                  key={repo.id}
+                  className="glass rounded-2xl overflow-hidden border border-cyan-500/20 glass-hover group relative"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.1 * index }}
+                  whileHover={{ y: -12, boxShadow: "0 0 25px rgba(0,238,255,0.25)" }}
+                >
+                  {/* Glow sweep */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-r from-cyan-500/10 via-transparent to-blue-500/10"></div>
 
-            <h3 className="text-2xl font-bold mb-2 group-hover:text-cyan-300 transition">
-              Disease Detection
-            </h3>
+                  {/* Preview Area */}
+                  <div className="bg-gradient-to-br from-gray-800 to-gray-900 h-48 flex items-center justify-center">
+                    <p className="text-gray-500 text-sm">GitHub Repository</p>
+                  </div>
 
-            <p className="text-gray-400 mb-4">
-              Detecting diseases using symptoms with machine learning models.
-            </p>
+                  {/* Hover Buttons */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                    <div className="flex gap-3">
 
-            <div className="flex flex-wrap gap-2 mb-6">
-              <span className="tech-badge">Python</span>
-              <span className="tech-badge">Machine Learning</span>
-              <span className="tech-badge">Scikit-learn</span>
-              <span className="tech-badge">Flask API</span>
-              <span className="tech-badge">React</span>
-              <span className="tech-badge">Pickle Models</span>
-            </div>
+                      {/* View Code */}
+                      <a
+                        href={repo.html_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="glass px-4 py-2 rounded-lg border border-purple-500/30 text-purple-300 hover:bg-purple-500/10 hover:shadow-[0_0_15px_rgba(168,85,247,0.5)] transition"
+                      >
+                        View Code
+                      </a>
 
-            <a
-              href="https://github.com/Barath-s-05/Disease-Detection"
-              target="_blank"
-              className="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:scale-105 transition"
-            >
-              View Project →
-            </a>
-          </motion.div>
+                      {/* View Site (only if exists) */}
+                      {liveLink && (
+                        <a
+                          href={liveLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="glass px-4 py-2 rounded-lg border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/10 hover:shadow-[0_0_15px_rgba(0,238,255,0.5)] transition"
+                        >
+                          View Site
+                        </a>
+                      )}
 
-          {/* 🏨 Hotel Management System */}
-          <motion.div
-            className="glass rounded-2xl p-8 border border-cyan-500/20 hover:border-cyan-400/40 transition-all group"
-            whileHover={{ y: -10 }}
-          >
-            <div className="text-4xl mb-4">🏨</div>
+                    </div>
+                  </div>
 
-            <h3 className="text-2xl font-bold mb-2 group-hover:text-cyan-300 transition">
-              Hotel Management System
-            </h3>
+                  {/* Content */}
+                  <div className="p-6 relative z-10">
+                    <h3 className="text-xl font-bold mb-2 capitalize">
+                      {repo.name.replace(/-/g, " ")}
+                    </h3>
+                    <p className="text-gray-400 mb-4">{repo.description}</p>
 
-            <p className="text-gray-400 mb-4">
-              DBMS-based hotel system handling bookings, billing, and services.
-            </p>
-
-            <div className="flex flex-wrap gap-2 mb-6">
-              <span className="tech-badge">Python</span>
-              <span className="tech-badge">SQLite</span>
-              <span className="tech-badge">CLI Application</span>
-              <span className="tech-badge">DBMS Concepts</span>
-            </div>
-
-            <a
-              href="https://github.com/Barath-s-05/Hotel-Management-System"
-              target="_blank"
-              className="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:scale-105 transition"
-            >
-              View Project →
-            </a>
-          </motion.div>
-
-          {/* 💳 Credit Fraud Detection */}
-          <motion.div
-            className="glass rounded-2xl p-8 border border-cyan-500/20 hover:border-cyan-400/40 transition-all group"
-            whileHover={{ y: -10 }}
-          >
-            <div className="text-4xl mb-4">💳</div>
-
-            <h3 className="text-2xl font-bold mb-2 group-hover:text-cyan-300 transition">
-              Credit Fraud Detection
-            </h3>
-
-            <p className="text-gray-400 mb-4">
-              ML system that detects fraudulent credit card transactions.
-            </p>
-
-            <div className="flex flex-wrap gap-2 mb-6">
-              <span className="tech-badge">Python</span>
-              <span className="tech-badge">Machine Learning</span>
-              <span className="tech-badge">Pandas</span>
-              <span className="tech-badge">Scikit-learn</span>
-              <span className="tech-badge">Data Preprocessing</span>
-            </div>
-
-            <a
-              href="https://github.com/Barath-s-05/Credit-Fraud-Detection"
-              target="_blank"
-              className="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:scale-105 transition"
-            >
-              View Project →
-            </a>
-          </motion.div>
-
-        </div>
+                    <div className="flex flex-wrap gap-2">
+                      {techStack.map((tech, i) => (
+                        <span
+                          key={i}
+                          className="text-xs px-3 py-1 rounded-full bg-cyan-900/30 text-cyan-300 border border-cyan-500/20"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        )}
       </div>
     </section>
   );
 };
 
-export default FeaturedProjects;
+export default Projects;
