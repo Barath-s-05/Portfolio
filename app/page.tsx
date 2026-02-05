@@ -7,11 +7,14 @@ import { motion } from "framer-motion";
 import Header from "@/app/components/Header";
 import About from "@/app/components/About";
 import Projects from "@/app/components/Projects";
+import Achievements from "./components/Achievements";
 import Experience from "@/app/components/Experience";
 import Contact from "@/app/components/Contact";
 import Footer from "@/app/components/ui/Footer";
 import CustomCursor from "@/app/components/ui/CustomCursor";
 import GlobalParticles from "@/app/components/ui/GlobalParticles";
+
+
 
 
 const HomePage = () => {
@@ -114,6 +117,7 @@ const HomePage = () => {
 
       <About />
       <Projects />
+      <Achievements />
       <Experience />
       <Contact />
       <Footer />
