@@ -30,6 +30,7 @@ const Achievements = () => {
             <ul className="space-y-4 text-gray-300 leading-relaxed">
               <li>🎓 <strong>Secretary</strong> — Higher Studies Club (2025–26)</li>
               <li>🎤 <strong>Soft Skills Lead Coordinator</strong> — CCA (2025–26)</li>
+              <li>🎓 <strong>Secretary</strong> — Rare Club (2025–26)</li>
               <li>🤝 Member — Peer Support Team</li>
               <li>🎉 Organizer — Onotsav (Onam Fest at CMRIT)</li>
             </ul>
