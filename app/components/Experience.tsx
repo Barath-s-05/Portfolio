@@ -9,32 +9,28 @@ const Experience = () => {
       title: "Technical Development Journey",
       role: "Student Tech Enthusiast",
       period: "Present",
-      description: "Continuously learning and building projects in various technologies. Focused on modern web development, UI/UX design, and problem-solving techniques.",
-      icon: "🚀"
+      description: "Continuously learning and building projects in various technologies. Focused on modern web development, UI/UX design, and problem-solving techniques."
     },
     {
       id: 2,
       title: "Engineering & Specialization",
       role: "CMR Institute of Technology - B.E. Computer Science (Data Science)",
       period: "Present | GPA: 8.5",
-      description: "Currently pursuing my degree with focus on Data Science concepts, Programming and software development, Problem-solving and system design, Applying theory through real-world technical projects.",
-      icon: "💻"
+      description: "Currently pursuing my degree with focus on Data Science concepts, Programming and software development, Problem-solving and system design, Applying theory through real-world technical projects."
     },
     {
       id: 3,
       title: "Higher Secondary - Stream Focus",
       role: "Adarsh Matriculation Higher Secondary School - 12th Grade",
       period: "2023 | 91%",
-      description: "Strengthened my interest in technology and computing while developing discipline, consistency, and performance under pressure.",
-      icon: "📘"
+      description: "Strengthened my interest in technology and computing while developing discipline, consistency, and performance under pressure."
     },
     {
       id: 4,
       title: "Strong Academic Foundation",
       role: "Adarsh Matriculation Higher Secondary School - 10th Grade",
       period: "2021 | 95%",
-      description: "Built a strong base in mathematics, logical reasoning, and analytical thinking — the roots of my problem-solving mindset.",
-      icon: "🏫"
+      description: "Built a strong base in mathematics, logical reasoning, and analytical thinking — the roots of my problem-solving mindset."
     }
   ];
 
@@ -52,7 +48,7 @@ const Experience = () => {
         </motion.h2>
         
         <div className="relative">
-          {/* ✨ Animated glowing timeline line */}
+          {/* Animated glowing timeline line */}
           <motion.div
             className="absolute left-1/2 transform -translate-x-1/2 h-full w-[3px] hidden md:block"
             style={{
@@ -80,8 +76,7 @@ const Experience = () => {
                     className="glass p-6 rounded-2xl border border-violet-500/20 glass-hover"
                     whileHover={{ y: -6, boxShadow: "0 0 25px rgba(157,78,221,0.25)" }}
                   >
-                    <div className="flex items-start gap-4">
-                      <div className="text-3xl">{exp.icon}</div>
+                    <div>
                       <div>
                         <h3 className="text-xl font-bold text-cyan-300">{exp.title}</h3>
                         <p className="text-lg text-gray-300 mb-2">{exp.role}</p>
@@ -92,7 +87,7 @@ const Experience = () => {
                   </motion.div>
                 </div>
                 
-                {/* ✨ Glowing animated timeline node */}
+                {/* Glowing animated timeline node */}
                 <div className="relative z-10 flex justify-center items-center">
                   <div className="relative flex items-center justify-center">
                     <div className="absolute w-10 h-10 rounded-full bg-cyan-400/20 animate-ping"></div>

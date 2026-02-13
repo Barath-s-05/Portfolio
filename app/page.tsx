@@ -92,21 +92,21 @@ const HomePage = () => {
         >
           <div className="relative w-72 h-72 mx-auto">
 
-            {/* 🌌 Outer Glow Aura */}
+            {/* Outer Glow Aura */}
             <div className="absolute inset-0 rounded-full bg-cyan-500/20 blur-[120px] animate-pulse"></div>
 
-            {/* 🌀 Orbit Ring */}
+            {/* Orbit Ring */}
             <div className="absolute inset-0 rounded-full border border-cyan-400/20 animate-spin-slow"></div>
 
-            {/* 🛰️ Moving Satellite Dot */}
+            {/* Moving Satellite Dot */}
             <div className="absolute w-full h-full animate-spin-slow">
               <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-3 h-3 bg-cyan-400 rounded-full shadow-[0_0_10px_rgba(0,238,255,0.9)]"></div>
             </div>
 
-            {/* 🌠 Middle Glow */}
+            {/* Middle Glow */}
             <div className="absolute inset-6 rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 blur-3xl opacity-70 animate-pulse"></div>
 
-            {/* 🔵 Inner Planet Core */}
+            {/* Inner Planet Core */}
             <div className="absolute inset-14 rounded-full bg-gradient-to-br from-cyan-200 via-blue-300 to-indigo-400 shadow-[0_0_60px_rgba(0,238,255,0.6)]"></div>
 
           </div>

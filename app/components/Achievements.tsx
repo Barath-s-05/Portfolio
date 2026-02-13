@@ -28,11 +28,11 @@ const Achievements = () => {
           >
             <h3 className="text-2xl font-semibold text-cyan-300 mb-6">Leadership & Responsibilities</h3>
             <ul className="space-y-4 text-gray-300 leading-relaxed">
-              <li>🎓 <strong>Secretary</strong> — Higher Studies Club (2025–26)</li>
-              <li>🎤 <strong>Soft Skills Lead Coordinator</strong> — CCA (2025–26)</li>
-              <li>🎓 <strong>Secretary</strong> — Rare Club (2025–26)</li>
-              <li>🤝 Member — Peer Support Team</li>
-              <li>🎉 Organizer — Onotsav (Onam Fest at CMRIT)</li>
+              <li><strong>Secretary</strong> — Higher Studies Club (2025–26)</li>
+              <li><strong>Soft Skills Lead Coordinator</strong> — CCA (2025–26)</li>
+              <li><strong>Secretary</strong> — Rare Club (2025–26)</li>
+              <li>Member — Peer Support Team</li>
+              <li>Organizer — Onotsav (Onam Fest at CMRIT)</li>
             </ul>
           </motion.div>
 
@@ -45,10 +45,10 @@ const Achievements = () => {
           >
             <h3 className="text-2xl font-semibold text-cyan-300 mb-6">Hackathons & Technical Events</h3>
             <ul className="space-y-4 text-gray-300 leading-relaxed">
-              <li>🚀 Fullstack Fiesta — Areta, Bangalore (Feb 2025)</li>
-              <li>⚡ TechXcelerate — BITS Hyderabad (Mar 2025)</li>
-              <li>💡 MSME Idea Hackathon (Aug 2025)</li>
-              <li>🏆 SIH Internal Hackathon (Sept 2025)</li>
+              <li>Fullstack Fiesta — Areta, Bangalore (Feb 2025)</li>
+              <li>TechXcelerate — BITS Hyderabad (Mar 2025)</li>
+              <li>MSME Idea Hackathon (Aug 2025)</li>
+              <li>SIH Internal Hackathon (Sept 2025)</li>
             </ul>
           </motion.div>
 
@@ -61,8 +61,8 @@ const Achievements = () => {
           >
             <h3 className="text-2xl font-semibold text-cyan-300 mb-6">Patents (Under Process)</h3>
             <ul className="space-y-4 text-gray-300 leading-relaxed">
-              <li>🧊 Eco-Friendly Modular Cold Storage Using Sugarcane Bagasse Panels</li>
-              <li>🔔 Smart Reminder Keychain with Mobile Checklist Vibration Alerts</li>
+              <li>Eco-Friendly Modular Cold Storage Using Sugarcane Bagasse Panels</li>
+              <li>Smart Reminder Keychain with Mobile Checklist Vibration Alerts</li>
             </ul>
           </motion.div>
 
@@ -75,10 +75,10 @@ const Achievements = () => {
           >
             <h3 className="text-2xl font-semibold text-cyan-300 mb-6">Awards & Certifications</h3>
             <ul className="space-y-4 text-gray-300 leading-relaxed">
-              <li>🥈 2nd Prize — College Mini Project Competition (Weather & Wi-Fi Sensor Robot)</li>
-              <li>📜 Database & SQL for Data Science with Python</li>
-              <li>📘 Divide & Conquer Algorithms</li>
-              <li>🐍 Python Programming Certifications</li>
+              <li>2nd Prize — College Mini Project Competition (Weather & Wi-Fi Sensor Robot)</li>
+              <li>Database & SQL for Data Science with Python</li>
+              <li>Divide & Conquer Algorithms</li>
+              <li>Python Programming Certifications</li>
             </ul>
           </motion.div>
 
