@@ -1,7 +1,7 @@
 "use client";
 
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
-
+import { SiLeetcode } from "react-icons/si";
 const Footer = () => {
   return (
     <footer className="relative mt-20 border-t border-cyan-500/10 overflow-hidden">
@@ -41,6 +41,16 @@ const Footer = () => {
               <FaLinkedin />
             </a>
 
+            <a
+              href="https://leetcode.com/u/Barath0509/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-cyan-300 transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(0,255,255,0.7)]"
+              aria-label="Leetcode"
+            >
+              <SiLeetcode />
+            </a>
+            
             <a
               href="mailto:sanbarath0509@gmail.com"
               className="hover:text-cyan-300 transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(0,255,255,0.7)]"
