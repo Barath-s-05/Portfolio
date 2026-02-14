@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
-
+import { SiLeetcode } from "react-icons/si";
 const Contact = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -114,6 +114,16 @@ const Contact = () => {
               className="p-4 rounded-full glass border border-cyan-500/20 hover:border-cyan-400 hover:text-cyan-400 hover:shadow-[0_0_20px_rgba(0,238,255,0.6)] transition duration-300 hover:-translate-y-1 inline-flex items-center justify-center"
             >
               <FaGithub />
+            </a>
+
+            {/* Leetcode */}
+            <a
+              href="https://leetcode.com/u/Barath0509/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-4 rounded-full glass border border-cyan-500/20 hover:border-cyan-400 hover:text-cyan-400 hover:shadow-[0_0_20px_rgba(0,238,255,0.6)] transition duration-300 hover:-translate-y-1 inline-flex items-center justify-center"
+            >
+              <SiLeetcode />
             </a>
 
             {/* Email (opens Gmail compose) */}
