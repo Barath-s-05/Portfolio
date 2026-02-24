@@ -7,10 +7,22 @@ const About = () => {
   const [activeSkill, setActiveSkill] = useState(0);
   
   const skills = [
-    { name: "Frontend Development", percentage: 85 },
-    { name: "UI/UX Design", percentage: 74 },
-    { name: "Problem Solving", percentage: 80 },
-    { name: "Programming Fundamentals", percentage: 88 }
+    { 
+      name: "Frontend Development", 
+      description: "Build responsive, animated, production-ready user interfaces."
+    },
+    { 
+      name: "UI/UX Design", 
+      description: "Design intuitive layouts focused on clarity and usability."
+    },
+    { 
+      name: "Problem Solving", 
+      description: "Break complex systems into scalable and efficient solutions."
+    },
+    { 
+      name: "Programming Fundamentals", 
+      description: "Strong foundation in data structures, algorithms, and system logic."
+    }
   ];
 
   return (
@@ -34,7 +46,6 @@ const About = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            {/* Glow sweep */}
             <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-cyan-500/10 via-transparent to-blue-500/10 pointer-events-none"></div>
 
             <h3 className="text-2xl font-semibold mb-4 text-cyan-300">My Story</h3>
@@ -59,24 +70,15 @@ const About = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
-                {/* Glow sweep */}
                 <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-violet-500/10 via-transparent to-cyan-500/10 pointer-events-none"></div>
 
-                <div className="flex items-center mb-3 relative z-10">
-                  <h4 className="text-xl font-semibold">{skill.name}</h4>
-                  <span className="ml-auto text-cyan-300">{skill.percentage}%</span>
-                </div>
+                <h4 className="text-xl font-semibold mb-2 relative z-10">
+                  {skill.name}
+                </h4>
 
-                {/* Animated progress bar */}
-                <div className="h-2 bg-gray-700 rounded-full overflow-hidden relative z-10">
-                  <motion.div 
-                    className="h-full bg-gradient-to-r from-cyan-400 to-blue-500 shadow-[0_0_15px_rgba(0,238,255,0.6)]"
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${skill.percentage}%` }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1, ease: "easeOut" }}
-                  />
-                </div>
+                <p className="text-gray-400 text-sm leading-relaxed relative z-10">
+                  {skill.description}
+                </p>
               </motion.div>
             ))}
           </div>
