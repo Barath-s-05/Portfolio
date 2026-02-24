@@ -44,18 +44,19 @@ const About = () => {
           className="flex justify-center mb-16"
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
+          animate={{ y: [0, -6, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
         >
           <div className="relative">
-            <div className="absolute inset-0 rounded-full blur-2xl bg-cyan-400/20"></div>
+            <div className="absolute inset-0 rounded-full blur-2xl bg-cyan-400/15"></div>
 
             <div className="relative w-32 h-32 rounded-full overflow-hidden border border-cyan-400/40 shadow-[0_0_30px_rgba(0,238,255,0.35)]">
               <Image
                 src="/profile.jpeg"
                 alt="Barath"
-                width={128}
-                height={128}
+                width={144}
+                height={144}
                 className="w-full h-full object-cover"
               />
             </div>
