@@ -31,11 +31,11 @@ const About = () => {
       
       {/* 🔥 Section Fade Wrapper Added */}
       <motion.div
-        className="max-w-6xl mx-auto"
-        initial={{ opacity: 0, y: 80 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
-        viewport={{ once: true, amount: 0.2 }}
+        className="glass p-8 rounded-2xl border border-cyan-500/20 relative overflow-hidden h-full flex flex-col"
+        initial={{ opacity: 0, x: -60 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
+        viewport={{ once: true, amount: 0.3 }}
       >
         
         <motion.h2 
@@ -103,9 +103,10 @@ const About = () => {
                 key={index}
                 className="glass p-6 rounded-xl border border-violet-500/20 relative overflow-hidden"
                 onMouseEnter={() => setActiveSkill(index)}
-                initial={{ opacity: 0, x: 30 }}
+                initial={{ opacity: 0, x: 60 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
+                transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1], delay: index * 0.15 }}
+                viewport={{ once: true, amount: 0.3 }}
               >
                 <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-violet-500/10 via-transparent to-cyan-500/10 pointer-events-none"></div>
 
