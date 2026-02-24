@@ -62,11 +62,11 @@ const About = () => {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
           
           {/* Bio Card */}
           <motion.div
-            className="glass p-8 rounded-2xl border border-cyan-500/15 relative overflow-hidden"
+            className="glass p-8 rounded-2xl border border-cyan-500/20 relative overflow-hidden h-full flex flex-col"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -76,16 +76,17 @@ const About = () => {
             <h3 className="text-2xl font-semibold mb-4 text-cyan-300">
               My Story
             </h3>
+            <div className="flex flex-col flex-grow">
+              <p className="text-gray-300 mb-6 leading-relaxed">
+                I&apos;m a Creative Developer and Computer Science student specializing in Data Science. I enjoy building full-stack applications that combine clean design with real-world functionality — from machine learning systems to real-time monitoring dashboards.
+              </p>
 
-            <p className="text-gray-300 mb-6 leading-relaxed">
-              I&apos;m a passionate Creative Developer and Student Tech Enthusiast currently pursuing my 
-              B.E. in Computer Science (Data Science). With a strong foundation in programming and a keen eye for design, I create intuitive and engaging user experiences.
-            </p>
+              <p className="text-gray-300 leading-relaxed">
+                My focus is on writing scalable, maintainable code and designing interfaces that feel intuitive and purposeful. I’m driven by solving complex problems and turning ideas into polished, production-ready applications.
+              </p>
+            </div>
 
-            <p className="text-gray-300 leading-relaxed">
-              My journey in tech began with curiosity and evolved into a passion for solving complex 
-              problems with elegant solutions. I specialize in responsive, performant, and accessible web applications.
-            </p>
+            
           </motion.div>
           
           {/* Skills */}
