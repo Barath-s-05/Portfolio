@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-
+import Image from "next/image";
 const About = () => {
   const [activeSkill, setActiveSkill] = useState(0);
   
@@ -48,11 +48,26 @@ const About = () => {
           >
             <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-cyan-500/10 via-transparent to-blue-500/10 pointer-events-none"></div>
 
+            {/* Profile Image */}
+            <div className="flex justify-start mb-6 relative z-10">
+              <div className="w-24 h-24 rounded-full overflow-hidden border border-cyan-400/40 shadow-[0_0_20px_rgba(0,238,255,0.25)]">
+                <Image
+                  src="/profile.jpeg"
+                  alt="Barath"
+                  width={96}
+                  height={96}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+
             <h3 className="text-2xl font-semibold mb-4 text-cyan-300">My Story</h3>
+
             <p className="text-gray-300 mb-6 leading-relaxed">
               I&apos;m a passionate Creative Developer and Student Tech Enthusiast currently pursuing my 
               B.E. in Computer Science (Data Science). With a strong foundation in programming and a keen eye for design, I create intuitive and engaging user experiences.
             </p>
+
             <p className="text-gray-300 leading-relaxed">
               My journey in tech began with curiosity and evolved into a passion for solving complex 
               problems with elegant solutions. I specialize in responsive, performant, and accessible web applications.
