@@ -28,7 +28,15 @@ const About = () => {
 
   return (
     <section id="about" className="py-20 px-8 md:px-16 lg:px-32">
-      <div className="max-w-6xl mx-auto">
+      
+      {/* 🔥 Section Fade Wrapper Added */}
+      <motion.div
+        className="max-w-6xl mx-auto"
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.2 }}
+      >
         
         <motion.h2 
           className="text-4xl font-bold mb-10 text-center"
@@ -76,6 +84,7 @@ const About = () => {
             <h3 className="text-2xl font-semibold mb-4 text-cyan-300">
               My Story
             </h3>
+
             <div className="flex flex-col flex-grow">
               <p className="text-gray-300 mb-6 leading-relaxed">
                 I&apos;m a Creative Developer and Computer Science student specializing in Data Science. I enjoy building full-stack applications that combine clean design with real-world functionality — from machine learning systems to real-time monitoring dashboards.
@@ -85,8 +94,6 @@ const About = () => {
                 My focus is on writing scalable, maintainable code and designing interfaces that feel intuitive and purposeful. I’m driven by solving complex problems and turning ideas into polished, production-ready applications.
               </p>
             </div>
-
-            
           </motion.div>
           
           {/* Skills */}
@@ -114,7 +121,10 @@ const About = () => {
           </div>
 
         </div>
-      </div>
+
+      </motion.div>
+      {/* 🔥 End Section Fade Wrapper */}
+
     </section>
   );
 };
