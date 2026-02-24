@@ -54,8 +54,8 @@ const About = () => {
               <Image
                 src="/profile.jpeg"
                 alt="Barath"
-                width={160}
-                height={160}
+                width={300}
+                height={300}
                 className="w-full h-full object-cover"
               />
             </div>
