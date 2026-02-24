@@ -11,18 +11,25 @@ const projects = [
     live: "https://disease-detection-ten.vercel.app/"
   },
   {
-    title: "Hotel Management System",
-    description: "DBMS-based hotel system handling bookings, billing, and services.",
-    tech: ["Python", "SQLite", "CLI Application", "DBMS Concepts"],
-    github: "https://github.com/Barath-s-05/Hotel-Management-System",
-    live: "" // add later if deployed
-  },
-  {
     title: "Credit Fraud Detection",
     description: "ML system that detects fraudulent credit card transactions.",
     tech: ["Python", "Machine Learning", "Pandas", "Scikit-learn", "Data Preprocessing"],
     github: "https://github.com/Barath-s-05/Credit-Fraud-Detection",
-    live: "" // add later if deployed
+    live: ""
+  },
+  {
+    title: "IntelliMon",
+    description: "Real-time system monitoring dashboard with live metrics visualization and performance tracking.",
+    tech: ["React", "Node.js", "Socket.io", "Chart.js", "Express", "Vercel"],
+    github: "https://github.com/Barath-s-05/IntelliMon",
+    live: "https://intellimon.vercel.app/"
+  },
+  {
+    title: "CapyCares",
+    description: "Mental wellness web app focused on emotional support, mood tracking, and self-care assistance.",
+    tech: ["React", "Node.js", "MongoDB", "Express", "Vercel"],
+    github: "https://github.com/Barath-s-05/CapyCares",
+    live: "https://capy-cares.vercel.app/"
   }
 ];
 
@@ -39,7 +46,7 @@ const Projects = () => {
           My <span className="neon-text">Projects</span>
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -53,7 +60,6 @@ const Projects = () => {
               <h3 className="text-xl font-bold mb-2">{project.title}</h3>
               <p className="text-gray-400 mb-4">{project.description}</p>
 
-              {/* Tech Stack */}
               <div className="flex flex-wrap gap-2 mb-6">
                 {project.tech.map((tech, i) => (
                   <span
@@ -65,7 +71,6 @@ const Projects = () => {
                 ))}
               </div>
 
-              {/* Buttons */}
               <div className="mt-auto flex gap-3">
                 <a
                   href={project.github}
