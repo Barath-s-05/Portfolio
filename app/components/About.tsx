@@ -29,9 +29,9 @@ const About = () => {
   return (
     <section id="about" className="py-20 px-8 md:px-16 lg:px-32">
       
-      {/* 🔥 Section Fade Wrapper Added */}
+      {/* Section Fade Wrapper (glass removed) */}
       <motion.div
-        className="glass p-8 rounded-2xl border border-cyan-500/20 relative overflow-hidden h-full flex flex-col"
+        className="max-w-6xl mx-auto"
         initial={{ opacity: 0, x: -60 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
@@ -124,7 +124,6 @@ const About = () => {
         </div>
 
       </motion.div>
-      {/* 🔥 End Section Fade Wrapper */}
 
     </section>
   );
