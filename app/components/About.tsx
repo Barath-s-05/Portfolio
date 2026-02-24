@@ -32,9 +32,9 @@ const About = () => {
       {/* 🔥 Section Fade Wrapper Added */}
       <motion.div
         className="max-w-6xl mx-auto"
-        initial={{ opacity: 0, y: 60 }}
+        initial={{ opacity: 0, y: 80 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: "easeOut" }}
+        transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
         viewport={{ once: true, amount: 0.2 }}
       >
         
