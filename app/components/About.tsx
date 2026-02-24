@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+
 const About = () => {
   const [activeSkill, setActiveSkill] = useState(0);
   
@@ -28,15 +29,39 @@ const About = () => {
   return (
     <section id="about" className="py-20 px-8 md:px-16 lg:px-32">
       <div className="max-w-6xl mx-auto">
+        
         <motion.h2 
-          className="text-4xl font-bold mb-16 text-center"
+          className="text-4xl font-bold mb-10 text-center"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
           About <span className="neon-text">Me</span>
         </motion.h2>
-        
+
+        {/* Centered Profile Image */}
+        <motion.div
+          className="flex justify-center mb-16"
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <div className="relative">
+            <div className="absolute inset-0 rounded-full blur-2xl bg-cyan-400/20"></div>
+
+            <div className="relative w-32 h-32 rounded-full overflow-hidden border border-cyan-400/40 shadow-[0_0_30px_rgba(0,238,255,0.35)]">
+              <Image
+                src="/profile.jpeg"
+                alt="Barath"
+                width={128}
+                height={128}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </motion.div>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           
           {/* Bio Card */}
@@ -48,20 +73,9 @@ const About = () => {
           >
             <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-cyan-500/10 via-transparent to-blue-500/10 pointer-events-none"></div>
 
-            {/* Profile Image */}
-            <div className="flex justify-start mb-6 relative z-10">
-              <div className="w-24 h-24 rounded-full overflow-hidden border border-cyan-400/40 shadow-[0_0_20px_rgba(0,238,255,0.25)]">
-                <Image
-                  src="/profile.jpeg"
-                  alt="Barath"
-                  width={96}
-                  height={96}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-
-            <h3 className="text-2xl font-semibold mb-4 text-cyan-300">My Story</h3>
+            <h3 className="text-2xl font-semibold mb-4 text-cyan-300">
+              My Story
+            </h3>
 
             <p className="text-gray-300 mb-6 leading-relaxed">
               I&apos;m a passionate Creative Developer and Student Tech Enthusiast currently pursuing my 
@@ -97,6 +111,7 @@ const About = () => {
               </motion.div>
             ))}
           </div>
+
         </div>
       </div>
     </section>
