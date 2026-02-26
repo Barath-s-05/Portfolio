@@ -8,7 +8,7 @@ const projects = [
     description: "Detecting diseases using symptoms with machine learning models.",
     tech: ["Python", "Machine Learning", "Scikit-learn", "Flask API", "React", "Pickle Models"],
     github: "https://github.com/Barath-s-05/Disease-Detection",
-    live: "https://disease-detection-ten.vercel.app/"
+    live: "https://disease-detection-rho.vercel.app/"
   },
   {
     title: "Credit Fraud Detection",
