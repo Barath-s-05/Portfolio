@@ -7,7 +7,7 @@ const projects = [
     title: "Disease Detection",
     description: "Detecting diseases using symptoms with machine learning models.",
     tech: ["Python", "Machine Learning", "Scikit-learn", "Flask API", "React", "Pickle Models"],
-    github: "https://github.com/Barath-s-05/Disease-Detection",
+    github: "https://github.com/Barath-s-05/DiseaseDetection",
     live: "https://disease-detection-rho.vercel.app/"
   },
   {
