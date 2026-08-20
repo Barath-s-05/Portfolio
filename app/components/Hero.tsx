@@ -9,18 +9,17 @@ const Hero = () => {
 
   return (
     <section className="bg-hero relative overflow-hidden" style={{ minHeight: "88vh" }}>
-      {/* Atmospheric glow */}
-      <div className="glow" style={{ width: "700px", height: "700px", top: "20%", right: "15%", background: "radial-gradient(circle,rgba(59,130,246,0.045) 0%,transparent 60%)" }} />
+      <div className="glow" style={{ width: "800px", height: "800px", top: "15%", right: "10%", background: "radial-gradient(circle,rgba(59,130,246,0.05) 0%,transparent 55%)" }} />
 
-      {/* Wireframe geometry */}
       <div className="wire-grid">
         <div className="wire-cross" />
       </div>
 
       <motion.div className="w relative z-10" style={{ opacity, y }}>
-        <div className="flex flex-col" style={{ minHeight: "88vh", justifyContent: "flex-end", paddingBottom: "clamp(3rem, 6vh, 5rem)" }}>
+        <div className="flex flex-col" style={{ minHeight: "88vh", justifyContent: "center", paddingTop: "clamp(5rem,12vh,8rem)" }}>
           <motion.span
-            className="lbl block mb-6"
+            className="lbl block"
+            style={{ marginBottom: "20px" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
@@ -38,42 +37,45 @@ const Hero = () => {
           </motion.h1>
 
           <motion.p
-            className="b-lg mt-7 max-w-lg"
-            style={{ fontSize: "clamp(1rem, 1.3vw, 1.15rem)" }}
+            className="b-lg"
+            style={{ maxWidth: "650px", marginTop: "24px" }}
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            Building digital systems that turn complex ideas into real products.
+            Building digital systems that turn complex ideas into real products —
+            full-stack applications, intelligent tools and data-driven platforms.
           </motion.p>
 
           <motion.div
-            className="flex items-center gap-7 mt-10"
+            className="flex items-center"
+            style={{ gap: "2rem", marginTop: "32px" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.8 }}
           >
-            <a href="#work" className="a-link">
+            <a href="#work" className="a-link" style={{ fontSize: "0.82rem", letterSpacing: "0.14em" }}>
               VIEW WORK
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </a>
-            <a href="#contact" className="a-link">
+            <a href="#contact" className="a-link" style={{ fontSize: "0.82rem", letterSpacing: "0.14em" }}>
               CONTACT
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </a>
           </motion.div>
 
           <motion.div
-            className="flex items-center gap-6 mt-16"
+            className="flex items-center"
+            style={{ gap: "1.5rem", marginTop: "5rem" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 1.1 }}
           >
-            <span className="mono" style={{ fontSize: "0.55rem", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--text-faint)" }}>
+            <span className="mono" style={{ fontSize: "0.65rem", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--text-faint)" }}>
               Based in India
             </span>
-            <span style={{ width: "1px", height: "12px", background: "var(--navy)" }} />
-            <span className="mono" style={{ fontSize: "0.55rem", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--text-faint)" }}>
+            <span style={{ width: "1px", height: "14px", background: "var(--navy)" }} />
+            <span className="mono" style={{ fontSize: "0.65rem", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--text-faint)" }}>
               Available for opportunities
             </span>
           </motion.div>

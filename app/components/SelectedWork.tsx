@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import Image from "next/image";
 
 const projects = [
   {
@@ -37,8 +36,7 @@ const projects = [
     title: "PCOSense AI",
     tagline: "AI-Powered Healthcare Assistant",
     desc: "Intelligent conversational assistant for PCOS awareness with session memory, voice interaction, OCR-based medical report analysis, and explainable AI.",
-    problem: "PCOS awareness is limited. Users need accessible, personalized health guidance without replacing professional medical advice.",
-    build: "Multi-modal AI platform with conversational memory, voice interaction, and OCR-based report analysis using GPT-4o-mini with healthcare safety guardrails.",
+    features: ["VOICE", "OCR", "MEMORY", "EXPLAINABLE AI"],
     tech: ["Next.js", "FastAPI", "Firebase", "OpenAI", "Tesseract OCR"],
     github: "https://github.com/Barath-s-05",
     live: "",
@@ -50,8 +48,6 @@ const projects = [
     title: "IntelliMon",
     tagline: "Real-Time System Monitoring",
     desc: "Real-time system monitoring dashboard with live metrics visualization, WebSocket streaming, and performance tracking.",
-    problem: "System monitoring is often desktop-heavy and lacks real-time browser visibility.",
-    build: "WebSocket connections for live data streaming with Chart.js visualizations for CPU, memory, and network metrics.",
     tech: ["React", "Node.js", "Socket.io", "Chart.js", "Express"],
     github: "https://github.com/Barath-s-05/IntelliMon",
     live: "https://intellimon.vercel.app/",
@@ -59,8 +55,8 @@ const projects = [
   },
 ];
 
-/* ═════�════════════════════════════════════
-   LAYOUT A — Large visual left, content right (hero project)
+/* ═══════════════════════════════════════════
+   LAYOUT A — ClaimCheck — Hero project, large visual left
    ═══════════════════════════════════════════ */
 const LayoutA = ({ p }: { p: typeof projects[0] }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -73,7 +69,7 @@ const LayoutA = ({ p }: { p: typeof projects[0] }) => {
         <div className="proj-a">
           <motion.div className="p-vis" style={{ y: visY, aspectRatio: "4/3" }}>
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className="mono font-bold" style={{ fontSize: "clamp(4rem,7vw,7rem)", color: "rgba(30,41,59,0.5)" }}>{p.num}</span>
+              <span className="mono font-bold" style={{ fontSize: "clamp(4rem,8vw,8rem)", color: "rgba(30,41,59,0.5)" }}>{p.num}</span>
             </div>
             <div className="absolute" style={{ inset: "8%", background: "rgba(30,41,59,0.25)", borderRadius: "6px", border: "1px solid rgba(59,130,246,0.04)" }}>
               <div style={{ height: "12%", margin: "6% 6% 0", background: "rgba(30,41,59,0.5)", borderRadius: "3px" }} />
@@ -87,25 +83,25 @@ const LayoutA = ({ p }: { p: typeof projects[0] }) => {
 
           <div className="p-body">
             <span className="lbl">{p.cat}</span>
-            <h3 className="d-lg text-white">{p.title}</h3>
-            <p className="b-sm" style={{ maxWidth: "380px" }}>{p.desc}</p>
+            <h3 className="d-lg text-white" style={{ fontSize: "clamp(2.2rem,4.5vw,3.5rem)" }}>{p.title}</h3>
+            <p className="b-lg" style={{ maxWidth: "440px" }}>{p.desc}</p>
 
-            <div style={{ borderTop: "1px solid var(--border)", paddingTop: "0.8rem" }}>
-              <p className="lbl mb-1.5" style={{ fontSize: "0.5rem" }}>Problem</p>
-              <p className="b-xs" style={{ maxWidth: "380px" }}>{p.problem}</p>
+            <div style={{ borderTop: "1px solid var(--border)", paddingTop: "1rem" }}>
+              <p className="lbl mb-2" style={{ fontSize: "0.6rem" }}>Problem</p>
+              <p className="b-sm" style={{ maxWidth: "440px" }}>{p.problem}</p>
             </div>
             <div>
-              <p className="lbl mb-1.5" style={{ fontSize: "0.5rem" }}>Build</p>
-              <p className="b-xs" style={{ maxWidth: "380px" }}>{p.build}</p>
+              <p className="lbl mb-2" style={{ fontSize: "0.6rem" }}>Build</p>
+              <p className="b-sm" style={{ maxWidth: "440px" }}>{p.build}</p>
             </div>
 
-            <div className="flex flex-wrap gap-x-0 gap-y-1 mt-1">
-              {p.tech.map((t,i) => <span key={t} className="b-xs">{t}{i<p.tech.length-1 && <span style={{color:"rgba(69,77,98,0.4)",margin:"0 0.35rem"}}>·</span>}</span>)}
+            <div className="flex flex-wrap gap-x-0 gap-y-1 mt-2">
+              {p.tech.map((t, i) => <span key={t} className="b-sm">{t}{i < p.tech.length - 1 && <span style={{ color: "rgba(69,77,98,0.4)", margin: "0 0.4rem" }}>·</span>}</span>)}
             </div>
 
-            <div className="flex items-center gap-5 mt-1">
-              <a href={p.github} target="_blank" rel="noopener noreferrer" className="a-link">GITHUB <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round"/></svg></a>
-              {p.live && <a href={p.live} target="_blank" rel="noopener noreferrer" className="a-link">LIVE <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round"/></svg></a>}
+            <div className="flex items-center gap-5 mt-2">
+              <a href={p.github} target="_blank" rel="noopener noreferrer" className="a-link">GITHUB <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
+              {p.live && <a href={p.live} target="_blank" rel="noopener noreferrer" className="a-link">LIVE <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round" /></svg></a>}
             </div>
           </div>
         </div>
@@ -115,7 +111,7 @@ const LayoutA = ({ p }: { p: typeof projects[0] }) => {
 };
 
 /* ═══════════════════════════════════════════
-   LAYOUT B — Reversed: content left, visual right
+   LAYOUT B — DevFlow — Reversed
    ═══════════════════════════════════════════ */
 const LayoutB = ({ p }: { p: typeof projects[0] }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -128,7 +124,7 @@ const LayoutB = ({ p }: { p: typeof projects[0] }) => {
         <div className="proj-a rev">
           <motion.div className="p-vis" style={{ y: visY }}>
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className="mono font-bold" style={{ fontSize: "clamp(4rem,7vw,7rem)", color: "rgba(30,41,59,0.5)" }}>{p.num}</span>
+              <span className="mono font-bold" style={{ fontSize: "clamp(4rem,8vw,8rem)", color: "rgba(30,41,59,0.5)" }}>{p.num}</span>
             </div>
             <div className="absolute" style={{ inset: "8%", background: "rgba(30,41,59,0.25)", borderRadius: "6px" }}>
               <div style={{ display: "flex", gap: "3%", height: "100%", padding: "5%" }}>
@@ -147,25 +143,25 @@ const LayoutB = ({ p }: { p: typeof projects[0] }) => {
 
           <div className="p-body">
             <span className="lbl">{p.cat}</span>
-            <h3 className="d-lg text-white">{p.title}</h3>
-            <p className="b-sm" style={{ maxWidth: "380px" }}>{p.desc}</p>
+            <h3 className="d-lg text-white" style={{ fontSize: "clamp(2.2rem,4.5vw,3.5rem)" }}>{p.title}</h3>
+            <p className="b-lg" style={{ maxWidth: "440px" }}>{p.desc}</p>
 
-            <div style={{ borderTop: "1px solid var(--border)", paddingTop: "0.8rem" }}>
-              <p className="lbl mb-1.5" style={{ fontSize: "0.5rem" }}>Problem</p>
-              <p className="b-xs" style={{ maxWidth: "380px" }}>{p.problem}</p>
+            <div style={{ borderTop: "1px solid var(--border)", paddingTop: "1rem" }}>
+              <p className="lbl mb-2" style={{ fontSize: "0.6rem" }}>Problem</p>
+              <p className="b-sm" style={{ maxWidth: "440px" }}>{p.problem}</p>
             </div>
             <div>
-              <p className="lbl mb-1.5" style={{ fontSize: "0.5rem" }}>Build</p>
-              <p className="b-xs" style={{ maxWidth: "380px" }}>{p.build}</p>
+              <p className="lbl mb-2" style={{ fontSize: "0.6rem" }}>Build</p>
+              <p className="b-sm" style={{ maxWidth: "440px" }}>{p.build}</p>
             </div>
 
-            <div className="flex flex-wrap gap-x-0 gap-y-1 mt-1">
-              {p.tech.map((t,i) => <span key={t} className="b-xs">{t}{i<p.tech.length-1 && <span style={{color:"rgba(69,77,98,0.4)",margin:"0 0.35rem"}}>·</span>}</span>)}
+            <div className="flex flex-wrap gap-x-0 gap-y-1 mt-2">
+              {p.tech.map((t, i) => <span key={t} className="b-sm">{t}{i < p.tech.length - 1 && <span style={{ color: "rgba(69,77,98,0.4)", margin: "0 0.4rem" }}>·</span>}</span>)}
             </div>
 
-            <div className="flex items-center gap-5 mt-1">
-              <a href={p.github} target="_blank" rel="noopener noreferrer" className="a-link">GITHUB <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round"/></svg></a>
-              {p.live && <a href={p.live} target="_blank" rel="noopener noreferrer" className="a-link">LIVE <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round"/></svg></a>}
+            <div className="flex items-center gap-5 mt-2">
+              <a href={p.github} target="_blank" rel="noopener noreferrer" className="a-link">GITHUB <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
+              {p.live && <a href={p.live} target="_blank" rel="noopener noreferrer" className="a-link">LIVE <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round" /></svg></a>}
             </div>
           </div>
         </div>
@@ -175,9 +171,9 @@ const LayoutB = ({ p }: { p: typeof projects[0] }) => {
 };
 
 /* ═══════════════════════════════════════════
-   LAYOUT C — Centered large visual, text below
+   LAYOUT C — PCOSense — Distinct product presentation
    ═══════════════════════════════════════════ */
-const LayoutC = ({ p }: { p: typeof projects[0] }) => {
+const LayoutC = ({ p }: { p: typeof projects[2] }) => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const visY = useTransform(scrollYProgress, [0, 1], [15, -15]);
@@ -185,39 +181,63 @@ const LayoutC = ({ p }: { p: typeof projects[0] }) => {
   return (
     <div ref={ref} style={{ padding: "clamp(5rem,10vh,8rem) 0", borderBottom: "1px solid var(--border)" }}>
       <div className="w">
-        <div className="proj-c">
-          <span className="lbl">{p.cat}</span>
-          <motion.h3 className="d-lg text-white" style={{ textAlign: "center" }}>{p.title}</motion.h3>
+        <span className="lbl">{p.cat}</span>
 
-          <motion.div className="p-vis w" style={{ y: visY, maxWidth: "900px", aspectRatio: "16/9" }}>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="mono font-bold" style={{ fontSize: "clamp(4rem,7vw,7rem)", color: "rgba(30,41,59,0.5)" }}>{p.num}</span>
-            </div>
-            <div className="absolute" style={{ left: "10%", right: "10%", top: "12%", height: "10%", background: "rgba(30,41,59,0.4)", borderRadius: "4px" }} />
-            <div className="absolute" style={{ left: "10%", right: "10%", top: "28%", bottom: "15%", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "3%" }}>
-              {[0,1,2].map(i => <div key={i} style={{ background: i===0 ? "rgba(59,130,246,0.03)" : "rgba(30,41,59,0.25)", borderRadius: "4px", border: i===0 ? "1px solid rgba(59,130,246,0.06)" : "none" }} />)}
-            </div>
-            <div className="absolute inset-0" style={{ background: "linear-gradient(180deg,transparent 60%,rgba(8,9,13,0.4))" }} />
-          </motion.div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mt-6">
+          {/* Left: Title + features */}
+          <div className="lg:col-span-5">
+            <h3 className="d-lg text-white mb-3" style={{ fontSize: "clamp(2.2rem,4.5vw,3.8rem)" }}>{p.title}</h3>
+            <p className="b-lg mb-8" style={{ maxWidth: "380px" }}>{p.tagline}</p>
 
-          <div className="max-w-lg text-center" style={{ marginTop: "-1rem" }}>
-            <p className="b-sm mb-4">{p.desc}</p>
-
-            <div style={{ borderTop: "1px solid var(--border)", paddingTop: "0.8rem", textAlign: "left" }}>
-              <p className="lbl mb-1.5" style={{ fontSize: "0.5rem" }}>Problem</p>
-              <p className="b-xs mb-3" style={{ textAlign: "left" }}>{p.problem}</p>
-              <p className="lbl mb-1.5" style={{ fontSize: "0.5rem" }}>Build</p>
-              <p className="b-xs" style={{ textAlign: "left" }}>{p.build}</p>
-            </div>
-
-            <div className="flex flex-wrap gap-x-0 gap-y-1 mt-3 justify-center">
-              {p.tech.map((t,i) => <span key={t} className="b-xs">{t}{i<p.tech.length-1 && <span style={{color:"rgba(69,77,98,0.4)",margin:"0 0.35rem"}}>·</span>}</span>)}
+            <div className="flex flex-wrap gap-2 mb-8">
+              {p.features?.map((f) => (
+                <span
+                  key={f}
+                  className="mono"
+                  style={{
+                    fontSize: "0.65rem",
+                    letterSpacing: "0.15em",
+                    padding: "6px 14px",
+                    border: "1px solid rgba(59,130,246,0.15)",
+                    borderRadius: "4px",
+                    color: "var(--blue)",
+                  }}
+                >
+                  {f}
+                </span>
+              ))}
             </div>
 
-            <div className="flex items-center gap-5 mt-3 justify-center">
-              <a href={p.github} target="_blank" rel="noopener noreferrer" className="a-link">GITHUB <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round"/></svg></a>
-              {p.live && <a href={p.live} target="_blank" rel="noopener noreferrer" className="a-link">LIVE <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round"/></svg></a>}
+            <p className="b-sm mb-5" style={{ maxWidth: "380px" }}>{p.desc}</p>
+
+            <div className="flex flex-wrap gap-x-0 gap-y-1 mb-6">
+              {p.tech.map((t, i) => <span key={t} className="b-sm">{t}{i < p.tech.length - 1 && <span style={{ color: "rgba(69,77,98,0.4)", margin: "0 0.4rem" }}>·</span>}</span>)}
             </div>
+
+            <div className="flex items-center gap-5">
+              <a href={p.github} target="_blank" rel="noopener noreferrer" className="a-link">GITHUB <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
+            </div>
+          </div>
+
+          {/* Right: Visual */}
+          <div className="lg:col-span-7">
+            <motion.div className="p-vis" style={{ y: visY, aspectRatio: "16/10" }}>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="mono font-bold" style={{ fontSize: "clamp(4rem,8vw,8rem)", color: "rgba(30,41,59,0.5)" }}>{p.num}</span>
+              </div>
+              <div className="absolute" style={{ inset: "6%", background: "rgba(30,41,59,0.25)", borderRadius: "8px", border: "1px solid rgba(59,130,246,0.04)" }}>
+                {/* Chat-like interface mockup */}
+                <div style={{ padding: "6% 6% 0", display: "flex", flexDirection: "column", gap: "5%", height: "100%" }}>
+                  <div style={{ height: "8%", background: "rgba(30,41,59,0.5)", borderRadius: "3px", width: "40%" }} />
+                  <div style={{ display: "flex", flexDirection: "column", gap: "4%", flex: 1 }}>
+                    <div style={{ alignSelf: "flex-end", width: "55%", height: "20%", background: "rgba(59,130,246,0.06)", borderRadius: "6px 6px 0 6px", border: "1px solid rgba(59,130,246,0.06)" }} />
+                    <div style={{ alignSelf: "flex-start", width: "65%", height: "25%", background: "rgba(30,41,59,0.3)", borderRadius: "6px 6px 6px 0" }} />
+                    <div style={{ alignSelf: "flex-end", width: "45%", height: "15%", background: "rgba(59,130,246,0.06)", borderRadius: "6px 6px 0 6px", border: "1px solid rgba(59,130,246,0.06)" }} />
+                  </div>
+                </div>
+              </div>
+              <div className="absolute inset-0" style={{ background: "linear-gradient(180deg,transparent 55%,rgba(8,9,13,0.5))" }} />
+            </motion.div>
           </div>
         </div>
       </div>
@@ -226,7 +246,7 @@ const LayoutC = ({ p }: { p: typeof projects[0] }) => {
 };
 
 /* ═══════════════════════════════════════════
-   LAYOUT D — Compact horizontal feature
+   LAYOUT D — IntelliMon — Compact horizontal
    ═══════════════════════════════════════════ */
 const LayoutD = ({ p }: { p: typeof projects[0] }) => (
   <div style={{ padding: "clamp(4rem,8vh,6rem) 0" }}>
@@ -234,7 +254,7 @@ const LayoutD = ({ p }: { p: typeof projects[0] }) => (
       <div className="proj-a" style={{ alignItems: "center" }}>
         <div className="p-vis" style={{ aspectRatio: "16/10" }}>
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className="mono font-bold" style={{ fontSize: "clamp(3rem,5vw,5rem)", color: "rgba(30,41,59,0.5)" }}>{p.num}</span>
+            <span className="mono font-bold" style={{ fontSize: "clamp(3rem,6vw,6rem)", color: "rgba(30,41,59,0.5)" }}>{p.num}</span>
           </div>
           <div className="absolute" style={{ inset: "10%", background: "rgba(30,41,59,0.3)", borderRadius: "4px" }}>
             <div style={{ display: "flex", height: "100%", padding: "5%", gap: "3%" }}>
@@ -249,14 +269,14 @@ const LayoutD = ({ p }: { p: typeof projects[0] }) => (
 
         <div className="p-body">
           <span className="lbl">{p.cat}</span>
-          <h3 className="d-md text-white">{p.title}</h3>
-          <p className="b-xs" style={{ maxWidth: "360px" }}>{p.desc}</p>
+          <h3 className="d-md text-white" style={{ fontSize: "clamp(1.8rem,3vw,2.5rem)" }}>{p.title}</h3>
+          <p className="b-sm" style={{ maxWidth: "380px" }}>{p.desc}</p>
           <div className="flex flex-wrap gap-x-0 gap-y-1">
-            {p.tech.map((t,i) => <span key={t} className="b-xs">{t}{i<p.tech.length-1 && <span style={{color:"rgba(69,77,98,0.4)",margin:"0 0.35rem"}}>·</span>}</span>)}
+            {p.tech.map((t, i) => <span key={t} className="b-sm">{t}{i < p.tech.length - 1 && <span style={{ color: "rgba(69,77,98,0.4)", margin: "0 0.4rem" }}>·</span>}</span>)}
           </div>
           <div className="flex items-center gap-5">
-            <a href={p.github} target="_blank" rel="noopener noreferrer" className="a-link">GITHUB <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round"/></svg></a>
-            {p.live && <a href={p.live} target="_blank" rel="noopener noreferrer" className="a-link">LIVE <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round"/></svg></a>}
+            <a href={p.github} target="_blank" rel="noopener noreferrer" className="a-link">GITHUB <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
+            {p.live && <a href={p.live} target="_blank" rel="noopener noreferrer" className="a-link">LIVE <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round" /></svg></a>}
           </div>
         </div>
       </div>
@@ -271,13 +291,13 @@ const SelectedWork = () => {
     <section id="work" className="bg-work relative">
       <div className="w" style={{ paddingTop: "clamp(5rem,10vh,9rem)" }}>
         <motion.div initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
-          <span className="lbl">Selected Work</span>
+          <span className="lbl">Work</span>
         </motion.div>
       </div>
 
       {projects.map((p) => {
         const Layout = layouts[p.layout];
-        return <Layout key={p.title} p={p} />;
+        return <Layout key={p.title} p={p as any} />;
       })}
     </section>
   );

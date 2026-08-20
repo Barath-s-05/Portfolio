@@ -2,9 +2,9 @@
 
 import Header from "@/app/components/Header";
 import Hero from "@/app/components/Hero";
-import SelectedWork from "@/app/components/SelectedWork";
 import About from "@/app/components/About";
 import WhatIBuild from "@/app/components/WhatIBuild";
+import SelectedWork from "@/app/components/SelectedWork";
 import TechStack from "@/app/components/TechStack";
 import Experience from "@/app/components/Experience";
 import Contact from "@/app/components/Contact";
@@ -21,9 +21,9 @@ const HomePage = () => {
 
       <main>
         <Hero />
-        <SelectedWork />
         <About />
         <WhatIBuild />
+        <SelectedWork />
         <TechStack />
         <Experience />
         <Contact />

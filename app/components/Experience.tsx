@@ -18,10 +18,20 @@ const stats = [
   { n: "8.5", l: "GPA" },
 ];
 
-const recognition = [
-  { cat: "Awards", items: ["Second Runner Up — The Social Hackathon 2026 (National Level)", "Runner-up — College Mini-Project Competition"] },
-  { cat: "Patents", items: ["Proactive Reminder Keychain with Vibration and Wireless Communication System", "Low-Cost Clip-On Flame Detection and Alert System for Conventional Gas Stoves"] },
-  { cat: "Certifications", items: ["Divide and Conquer, Sorting and Searching — Stanford (Coursera)", "Databases and SQL for Data Science — IBM (Coursera)", "Learning Full Stack React — Infosys Springboard"] },
+const awards = [
+  "Second Runner Up — The Social Hackathon 2026 (National Level)",
+  "Runner-up — College Mini-Project Competition",
+];
+
+const patents = [
+  "Proactive Reminder Keychain with Vibration and Wireless Communication System",
+  "Low-Cost Clip-On Flame Detection and Alert System for Conventional Gas Stoves",
+];
+
+const certs = [
+  "Divide and Conquer, Sorting and Searching — Stanford (Coursera)",
+  "Databases and SQL for Data Science — IBM (Coursera)",
+  "Learning Full Stack React — Infosys Springboard",
 ];
 
 const Experience = () => (
@@ -32,51 +42,55 @@ const Experience = () => (
       </motion.div>
 
       {/* Timeline */}
-      <div className="max-w-3xl mb-20">
+      <div className="max-w-3xl mb-24">
         {timeline.map((item, i) => (
           <motion.div
             key={item.title + item.org}
-            className="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-3 md:gap-10"
-            style={{ padding: "1.5rem 0", borderBottom: i < timeline.length - 1 ? "1px solid var(--border)" : "none" }}
+            className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4 md:gap-12"
+            style={{ padding: "1.75rem 0", borderBottom: i < timeline.length - 1 ? "1px solid var(--border)" : "none" }}
             initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.3, delay: 0.04 * i }}
           >
-            <span className="mono" style={{ fontSize: "0.65rem", color: "var(--text-faint)" }}>{item.period}</span>
+            <span className="mono" style={{ fontSize: "0.7rem", color: "var(--text-faint)" }}>{item.period}</span>
             <div>
-              <h3 className="font-medium text-white" style={{ fontSize: "0.9rem" }}>{item.title}</h3>
-              <p className="text-sm" style={{ color: "var(--text-dim)", marginTop: "2px" }}>{item.org}</p>
-              <p className="text-sm" style={{ color: "var(--text-faint)", marginTop: "4px" }}>{item.detail}</p>
+              <h3 style={{ fontSize: "1.2rem", fontWeight: 500, color: "var(--text)" }}>{item.title}</h3>
+              <p style={{ fontSize: "0.95rem", color: "var(--text-dim)", marginTop: "3px" }}>{item.org}</p>
+              <p style={{ fontSize: "0.9rem", color: "var(--text-faint)", marginTop: "5px" }}>{item.detail}</p>
             </div>
           </motion.div>
         ))}
       </div>
 
       {/* Recognition */}
-      <div className="sep mb-12" />
-      <motion.div initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="mb-12">
+      <div className="sep mb-14" />
+      <motion.div initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="mb-14">
         <span className="lbl">Recognition</span>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-0 mb-12" style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}>
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-0 mb-14" style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}>
         {stats.map((s, i) => (
-          <motion.div key={s.l} style={{ padding: "1.5rem", borderRight: i < 3 ? "1px solid var(--border)" : "none" }} initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: 0.06 * i }}>
+          <motion.div key={s.l} style={{ padding: "1.75rem", borderRight: i < 3 ? "1px solid var(--border)" : "none" }} initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: 0.06 * i }}>
             <span className="d-md text-white">{s.n}</span>
-            <p className="text-sm mt-1" style={{ color: "var(--text-faint)" }}>{s.l}</p>
+            <p style={{ fontSize: "0.9rem", color: "var(--text-faint)", marginTop: "4px" }}>{s.l}</p>
           </motion.div>
         ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-        {recognition.map((r, i) => (
-          <motion.div key={r.cat} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: 0.06 * i }}>
-            <p className="lbl mb-3">{r.cat}</p>
-            <ul className="space-y-2">
-              {r.items.map((item) => (
-                <li key={item} className="b-xs flex items-start gap-2">
-                  <span className="w-1 h-1 rounded-full mt-1.5 flex-shrink-0" style={{ background: "var(--blue)" }} />
-                  {item}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        {[
+          { cat: "Awards", items: awards },
+          { cat: "Patents", items: patents },
+          { cat: "Certifications", items: certs },
+        ].map((section, i) => (
+          <motion.div key={section.cat} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: 0.06 * i }}>
+            <p className="lbl mb-4">{section.cat}</p>
+            <ul className="space-y-3">
+              {section.items.map((item) => (
+                <li key={item} className="flex items-start gap-2.5">
+                  <span className="w-1 h-1 rounded-full mt-2 flex-shrink-0" style={{ background: "var(--blue)" }} />
+                  <span style={{ fontSize: "0.9rem", lineHeight: 1.6, color: "var(--text-dim)" }}>{item}</span>
                 </li>
               ))}
             </ul>

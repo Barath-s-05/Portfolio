@@ -36,7 +36,7 @@ const Header = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.3 }}
       >
-        <a href="#" style={{ color: "var(--text)", fontWeight: 700, fontSize: "0.7rem" }}>
+        <a href="#" style={{ color: "var(--text)", fontWeight: 700, fontSize: "0.8rem", paddingLeft: "8px" }}>
           B<span style={{ color: "var(--blue)" }}>.</span>
         </a>
 
@@ -47,7 +47,8 @@ const Header = () => {
         </nav>
 
         <a href={resumeLink} target="_blank" rel="noopener noreferrer" className="resume-link">
-          Resume
+          RESUME
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: "11px", height: "11px", marginLeft: "4px" }}><path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round" /></svg>
         </a>
 
         <button
