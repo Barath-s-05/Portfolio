@@ -4,84 +4,78 @@ import { motion, useScroll, useTransform } from "framer-motion";
 
 const Hero = () => {
   const { scrollY } = useScroll();
-  const opacity = useTransform(scrollY, [0, 450], [1, 0]);
-  const y = useTransform(scrollY, [0, 450], [0, 50]);
+  const opacity = useTransform(scrollY, [0, 400], [1, 0]);
+  const y = useTransform(scrollY, [0, 400], [0, 40]);
 
   return (
-    <section className="bg-hero relative overflow-hidden" style={{ minHeight: "100vh" }}>
+    <section className="bg-hero relative overflow-hidden" style={{ minHeight: "88vh" }}>
       {/* Atmospheric glow */}
-      <div className="glow" style={{ width: "800px", height: "800px", top: "15%", left: "20%", background: "radial-gradient(circle, rgba(59,130,246,0.04) 0%, transparent 65%)" }} />
-      <div className="glow" style={{ width: "500px", height: "500px", bottom: "10%", right: "10%", background: "radial-gradient(circle, rgba(30,58,95,0.06) 0%, transparent 60%)" }} />
+      <div className="glow" style={{ width: "700px", height: "700px", top: "20%", right: "15%", background: "radial-gradient(circle,rgba(59,130,246,0.045) 0%,transparent 60%)" }} />
 
-      <motion.div className="wrap relative z-10" style={{ opacity, y }}>
-        <div className="flex flex-col" style={{ minHeight: "100vh", justifyContent: "flex-end", paddingBottom: "clamp(4rem, 8vh, 8rem)" }}>
-          <motion.div
+      {/* Wireframe geometry */}
+      <div className="wire-grid">
+        <div className="wire-cross" />
+      </div>
+
+      <motion.div className="w relative z-10" style={{ opacity, y }}>
+        <div className="flex flex-col" style={{ minHeight: "88vh", justifyContent: "flex-end", paddingBottom: "clamp(3rem, 6vh, 5rem)" }}>
+          <motion.span
+            className="lbl block mb-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mb-8"
+            transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <span className="t-label">Software · Data · AI</span>
-          </motion.div>
+            Software · Data · AI
+          </motion.span>
 
           <motion.h1
-            className="t-display text-white"
-            initial={{ opacity: 0, y: 25 }}
+            className="d-hero text-white"
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
           >
             BARATH
           </motion.h1>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
+          <motion.p
+            className="b-lg mt-7 max-w-lg"
+            style={{ fontSize: "clamp(1rem, 1.3vw, 1.15rem)" }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-8 max-w-xl"
+            transition={{ duration: 0.5, delay: 0.6 }}
           >
-            <p className="t-body" style={{ fontSize: "clamp(1rem, 1.4vw, 1.2rem)", lineHeight: 1.7 }}>
-              Building digital systems that turn complex ideas into real products.
-            </p>
-          </motion.div>
+            Building digital systems that turn complex ideas into real products.
+          </motion.p>
 
           <motion.div
-            className="flex items-center gap-8 mt-12"
+            className="flex items-center gap-7 mt-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
+            transition={{ duration: 0.4, delay: 0.8 }}
           >
-            <a href="#work" className="arrow-link">
+            <a href="#work" className="a-link">
               VIEW WORK
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M7 17L17 7M17 7H7M17 7v10" />
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </a>
-            <a href="#contact" className="arrow-link">
-              GET IN TOUCH
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M7 17L17 7M17 7H7M17 7v10" />
-              </svg>
+            <a href="#contact" className="a-link">
+              CONTACT
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </a>
           </motion.div>
 
           <motion.div
-            className="flex items-center gap-3 mt-16"
+            className="flex items-center gap-6 mt-16"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.4, delay: 1.2 }}
+            transition={{ duration: 0.4, delay: 1.1 }}
           >
-            <span className="t-mono" style={{ fontSize: "0.6rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--text-muted)" }}>
-              Scroll
+            <span className="mono" style={{ fontSize: "0.55rem", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--text-faint)" }}>
+              Based in India
             </span>
-            <div style={{ width: "24px", height: "1px", background: "var(--navy)" }} />
-            <motion.span
-              className="t-mono"
-              style={{ fontSize: "0.6rem", color: "var(--text-muted)" }}
-              animate={{ y: [0, 3, 0] }}
-              transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-            >
-              ↓
-            </motion.span>
+            <span style={{ width: "1px", height: "12px", background: "var(--navy)" }} />
+            <span className="mono" style={{ fontSize: "0.55rem", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--text-faint)" }}>
+              Available for opportunities
+            </span>
           </motion.div>
         </div>
       </motion.div>
