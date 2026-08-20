@@ -85,7 +85,7 @@ const Experience = () => (
           { cat: "Certifications", items: certs },
         ].map((section, i) => (
           <motion.div key={section.cat} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: 0.06 * i }}>
-            <p className="lbl mb-5">{section.cat}</p>
+            <p className="lbl" style={{ marginBottom: "1.5rem" }}>{section.cat}</p>
             <ul style={{ display: "flex", flexDirection: "column", gap: "0.85rem" }}>
               {section.items.map((item) => (
                 <li key={item} className="flex items-start gap-2.5">
