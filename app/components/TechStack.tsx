@@ -26,7 +26,7 @@ const TechStack = () => (
               {g.items.map((item, j) => (
                 <span
                   key={item}
-                  className="cursor-none transition-colors duration-300"
+                  className="transition-colors duration-300"
                   style={{ fontSize: "1.05rem", lineHeight: 1.7, color: "var(--text-dim)" }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = "var(--blue-l)")}
                   onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-dim)")}

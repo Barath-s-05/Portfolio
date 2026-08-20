@@ -42,7 +42,7 @@ const Footer = () => (
             { icon: <SiLeetcode />, href: "https://leetcode.com/u/Barath0509/", l: "LeetCode" },
             { icon: <FaEnvelope />, href: "mailto:barathsr05@gmail.com", l: "Email" },
           ].map((item) => (
-            <a key={item.l} href={item.href} target={item.l !== "Email" ? "_blank" : undefined} rel={item.l !== "Email" ? "noopener noreferrer" : undefined} className="transition-colors duration-300 cursor-none" style={{ color: "var(--text-faint)", fontSize: "0.95rem" }} onMouseEnter={(e) => (e.currentTarget.style.color = "var(--blue-l)")} onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-faint)")} aria-label={item.l}>
+            <a key={item.l} href={item.href} target={item.l !== "Email" ? "_blank" : undefined} rel={item.l !== "Email" ? "noopener noreferrer" : undefined} className="transition-colors duration-300" style={{ color: "var(--text-faint)", fontSize: "0.95rem" }} onMouseEnter={(e) => (e.currentTarget.style.color = "var(--blue-l)")} onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-faint)")} aria-label={item.l}>
               {item.icon}
             </a>
           ))}

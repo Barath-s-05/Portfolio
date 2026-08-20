@@ -72,7 +72,7 @@ const Contact = () => {
                 letterSpacing: "0.12em",
                 fontWeight: 600,
                 border: "none",
-                cursor: "none",
+                cursor: "default",
                 borderRadius: "2px",
                 padding: "1.25rem 0",
               }}
@@ -108,7 +108,7 @@ const Contact = () => {
                 { icon: <SiLeetcode />, href: "https://leetcode.com/u/Barath0509/", l: "LeetCode" },
                 { icon: <FaEnvelope />, href: "mailto:barathsr05@gmail.com", l: "Email" },
               ].map((s) => (
-                <a key={s.l} href={s.href} target="_blank" rel="noopener noreferrer" className="transition-colors duration-300 cursor-none" style={{ color: "var(--text-faint)", fontSize: "1.15rem" }} onMouseEnter={(e) => (e.currentTarget.style.color = "var(--blue-l)")} onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-faint)")} aria-label={s.l}>
+                <a key={s.l} href={s.href} target="_blank" rel="noopener noreferrer" className="transition-colors duration-300" style={{ color: "var(--text-faint)", fontSize: "1.15rem" }} onMouseEnter={(e) => (e.currentTarget.style.color = "var(--blue-l)")} onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-faint)")} aria-label={s.l}>
                   {s.icon}
                 </a>
               ))}

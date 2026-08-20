@@ -53,7 +53,7 @@ const Header = () => {
 
         <button
           className="menu-btn hidden"
-          style={{ color: "var(--text-faint)", background: "none", border: "none", cursor: "none", padding: "4px" }}
+          style={{ color: "var(--text-faint)", background: "none", border: "none", cursor: "default", padding: "4px" }}
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Menu"
         >
