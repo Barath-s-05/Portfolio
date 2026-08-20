@@ -1,61 +1,89 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Link from "next/link";
+import { useEffect } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const Hero = () => {
+  const { scrollY } = useScroll();
+  const opacity = useTransform(scrollY, [0, 600], [1, 0]);
+  const y = useTransform(scrollY, [0, 600], [0, 100]);
+
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden section-padding">
-      <div className="container-wide relative z-10">
-        <div className="max-w-4xl">
+    <section className="section-full relative overflow-hidden">
+      <div className="blue-light-leak blue-light-leak-1 absolute top-1/4 -left-48" />
+      <div className="blue-light-leak blue-light-leak-2 absolute bottom-0 right-0" />
+
+      <motion.div
+        className="container-editorial relative z-10"
+        style={{ opacity, y }}
+      >
+        <div className="flex flex-col justify-between min-h-[85vh] py-12">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="mb-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="flex items-center justify-between"
           >
-            <span className="text-sm font-medium tracking-widest uppercase text-blue-400">
-              Developer & Problem Solver
-            </span>
+            <span className="label">Portfolio / 2025</span>
+            <span className="label">Chennai, India</span>
           </motion.div>
 
-          <motion.h1
-            className="hero-title text-white mb-6"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
-            BARATH
-          </motion.h1>
+          <div>
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              <h1 className="display-xl text-white">
+                BARATH
+              </h1>
+            </motion.div>
 
-          <motion.p
-            className="section-subtitle max-w-2xl mb-10"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            I build intelligent, full-stack digital experiences — from machine learning systems
-            to real-time dashboards. Clean code, bold design, real impact.
-          </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.5 }}
+              className="mt-6 max-w-xl"
+            >
+              <p className="body-lg">
+                Developer crafting intelligent systems — from ML pipelines
+                to real-time dashboards. Clean code, bold execution.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="mt-10 flex items-center gap-8"
+            >
+              <a href="#work" className="link-arrow">
+                View selected work
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a href="#contact" className="link-arrow">
+                Get in touch
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+            </motion.div>
+          </div>
 
           <motion.div
-            className="flex gap-4 flex-wrap"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 1 }}
+            className="flex items-center gap-6 text-[var(--text-faint)] text-xs tracking-widest uppercase"
           >
-            <Link href="#work">
-              <span className="btn-primary">View My Work</span>
-            </Link>
-            <Link href="#contact">
-              <span className="btn-ghost">Get In Touch</span>
-            </Link>
+            <span>Scroll</span>
+            <div className="w-px h-8 bg-[var(--blue-dim)]" />
+            <span>↓</span>
           </motion.div>
         </div>
-      </div>
-
-      {/* Subtle gradient orb */}
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,rgba(59,130,246,0.08)_0%,transparent_70%)] pointer-events-none" />
+      </motion.div>
     </section>
   );
 };

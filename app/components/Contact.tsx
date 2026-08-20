@@ -35,115 +35,98 @@ const Contact = () => {
     setIsSubmitting(false);
   };
 
-  const socials = [
-    { icon: <FaLinkedin />, href: "https://www.linkedin.com/in/barath-s05", label: "LinkedIn" },
-    { icon: <FaGithub />, href: "https://github.com/Barath-s-05", label: "GitHub" },
-    { icon: <SiLeetcode />, href: "https://leetcode.com/u/Barath0509/", label: "LeetCode" },
-    { icon: <FaEnvelope />, href: "https://mail.google.com/mail/?view=cm&fs=1&to=sanbarath0509@gmail.com", label: "Email" },
-  ];
-
   return (
-    <section id="contact" className="section-padding">
-      <div className="container-wide max-w-3xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mb-4"
-        >
-          <span className="text-sm font-medium tracking-widest uppercase text-blue-400">
-            Contact
-          </span>
-        </motion.div>
+    <section id="contact" className="section-spaced relative cta-section">
+      <div className="blue-light-leak blue-light-leak-1 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
 
-        <motion.h2
-          className="section-title text-white mb-6"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          Let&apos;s build something together.
-        </motion.h2>
-
-        <motion.p
-          className="section-subtitle mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-        >
-          Have a project in mind or just want to connect? I&apos;m always open to conversations.
-        </motion.p>
-
-        <motion.form
-          onSubmit={handleSubmit}
-          className="glass-subtle p-8 md:p-10 rounded-2xl mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
-            <input
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              placeholder="Name"
-              className="w-full bg-[rgba(30,41,59,0.4)] border border-[rgba(59,130,246,0.1)] rounded-xl px-5 py-3.5 text-sm text-white placeholder:text-[var(--text-muted)] focus:outline-none focus:border-blue-500/30 transition-colors"
-            />
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              placeholder="Email"
-              className="w-full bg-[rgba(30,41,59,0.4)] border border-[rgba(59,130,246,0.1)] rounded-xl px-5 py-3.5 text-sm text-white placeholder:text-[var(--text-muted)] focus:outline-none focus:border-blue-500/30 transition-colors"
-            />
-          </div>
-          <textarea
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-            rows={5}
-            placeholder="Tell me about your project..."
-            className="w-full bg-[rgba(30,41,59,0.4)] border border-[rgba(59,130,246,0.1)] rounded-xl px-5 py-3.5 text-sm text-white placeholder:text-[var(--text-muted)] focus:outline-none focus:border-blue-500/30 transition-colors mb-5 resize-none"
-          />
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="btn-primary w-full justify-center"
+      <div className="container-editorial relative z-10">
+        <div className="max-w-3xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
-            {isSubmitting ? "Sending..." : status === "success" ? "Message Sent!" : "Send Message"}
-          </button>
-        </motion.form>
+            <span className="label mb-6 block">Let&apos;s Connect</span>
+            <h2 className="display-lg text-white mb-6">
+              Let&apos;s build<br />something great.
+            </h2>
+            <p className="body-lg max-w-md mx-auto mb-16">
+              Have a project in mind or just want to talk? I&apos;m always open to new conversations.
+            </p>
+          </motion.div>
 
-        <motion.div
-          className="text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.25 }}
-        >
-          <div className="flex justify-center gap-5">
-            {socials.map((s) => (
+          <motion.form
+            onSubmit={handleSubmit}
+            className="text-left max-w-xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <input
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                placeholder="Name"
+                className="input-clean"
+              />
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                placeholder="Email"
+                className="input-clean"
+              />
+            </div>
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              required
+              rows={4}
+              placeholder="Message"
+              className="input-clean mb-8"
+            />
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full py-4 bg-[var(--blue)] text-white rounded-sm font-medium text-sm tracking-wide hover:bg-[var(--blue-light)] transition-all duration-300 cursor-none"
+            >
+              {isSubmitting ? "Sending..." : status === "success" ? "Sent." : "Send Message"}
+            </button>
+          </motion.form>
+
+          <motion.div
+            className="flex justify-center gap-6 mt-16"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            {[
+              { icon: <FaLinkedin />, href: "https://www.linkedin.com/in/barath-s05", label: "LinkedIn" },
+              { icon: <FaGithub />, href: "https://github.com/Barath-s-05", label: "GitHub" },
+              { icon: <SiLeetcode />, href: "https://leetcode.com/u/Barath0509/", label: "LeetCode" },
+              { icon: <FaEnvelope />, href: "mailto:sanbarath0509@gmail.com", label: "Email" },
+            ].map((s) => (
               <a
                 key={s.label}
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-11 h-11 rounded-full glass-subtle flex items-center justify-center text-[var(--text-muted)] hover:text-blue-400 hover:border-blue-500/20 transition-all duration-300"
+                className="w-11 h-11 flex items-center justify-center text-[var(--text-faint)] hover:text-[var(--blue-light)] transition-colors duration-300 cursor-none"
                 aria-label={s.label}
               >
                 {s.icon}
               </a>
             ))}
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

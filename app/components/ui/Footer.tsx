@@ -5,14 +5,14 @@ import { SiLeetcode } from "react-icons/si";
 
 const Footer = () => {
   return (
-    <footer className="relative border-t border-blue-500/5">
-      <div className="container-wide px-6 lg:px-10 py-12">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="text-center md:text-left">
+    <footer className="border-t border-[var(--blue-dim)]">
+      <div className="container-editorial py-12">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+          <div>
             <span className="text-lg font-bold text-white tracking-tight">
-              B<span className="text-blue-400">.</span>
+              B<span className="text-[var(--blue)]">.</span>
             </span>
-            <p className="text-[var(--text-muted)] text-sm mt-1">
+            <p className="text-[var(--text-faint)] text-xs mt-2">
               Developer & Problem Solver
             </p>
           </div>
@@ -29,7 +29,7 @@ const Footer = () => {
                 href={item.href}
                 target={item.label !== "Email" ? "_blank" : undefined}
                 rel={item.label !== "Email" ? "noopener noreferrer" : undefined}
-                className="text-[var(--text-muted)] hover:text-blue-400 transition-colors duration-300"
+                className="text-[var(--text-faint)] hover:text-[var(--blue-light)] transition-colors duration-300 cursor-none"
                 aria-label={item.label}
               >
                 {item.icon}
@@ -38,8 +38,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-blue-500/5 text-center text-[var(--text-muted)] text-xs">
-          &copy; {new Date().getFullYear()} Barath. Built with precision.
+        <div className="mt-8 pt-6 border-t border-[var(--blue-dim)] text-[var(--text-faint)] text-xs">
+          &copy; {new Date().getFullYear()} Barath
         </div>
       </div>
     </footer>

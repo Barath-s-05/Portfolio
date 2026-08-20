@@ -2,130 +2,74 @@
 
 import { motion } from "framer-motion";
 
-const experiences = [
+const timeline = [
   {
+    period: "Present",
     title: "B.E. Computer Science (Data Science)",
     org: "CMR Institute of Technology",
-    period: "Present",
-    detail: "GPA: 8.5",
-    description: "Focusing on Data Science, software development, and system design. Building real-world projects to apply理论 knowledge.",
+    detail: "GPA 8.5",
   },
   {
+    period: "2025–26",
     title: "Secretary — Higher Studies Club",
     org: "CMRIT",
-    period: "2025–26",
-    detail: "",
-    description: "Leading club initiatives, organizing career guidance sessions, and coordinating faculty-student interactions.",
+    detail: "Leadership",
   },
   {
+    period: "2025–26",
     title: "Secretary — Rare Club",
     org: "CMRIT",
-    period: "2025–26",
-    detail: "",
-    description: "Managing club operations and driving technical and cultural events for the student community.",
+    detail: "Operations",
   },
   {
+    period: "2025–26",
     title: "Soft Skills Lead Coordinator",
     org: "CCA",
-    period: "2025–26",
-    detail: "",
-    description: "Coordinating communication and interpersonal skills workshops for peers across departments.",
-  },
-  {
-    title: "12th Grade",
-    org: "Adarsh Matriculation Higher Secondary School",
-    period: "2023",
-    detail: "91%",
-    description: "Strengthened interest in technology while building discipline and analytical thinking.",
-  },
-  {
-    title: "10th Grade",
-    org: "Adarsh Matriculation Higher Secondary School",
-    period: "2021",
-    detail: "95%",
-    description: "Built a strong foundation in mathematics, logic, and problem-solving.",
+    detail: "Communication",
   },
 ];
 
 const Experience = () => {
   return (
-    <section id="experience" className="section-padding">
-      <div className="container-wide">
+    <section id="experience" className="section-spaced">
+      <div className="container-editorial">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-4"
+          className="mb-16"
         >
-          <span className="text-sm font-medium tracking-widest uppercase text-blue-400">
-            Experience & Leadership
-          </span>
+          <span className="label mb-4 block">Experience & Leadership</span>
+          <h2 className="display-md text-white max-w-lg">
+            Where I&apos;ve been.
+          </h2>
         </motion.div>
 
-        <motion.h2
-          className="section-title text-white mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          My journey so far.
-        </motion.h2>
-
-        <div className="relative max-w-3xl mx-auto">
-          <div className="timeline-line hidden md:block" />
-
-          <div className="space-y-10">
-            {experiences.map((exp, i) => (
-              <motion.div
-                key={exp.title}
-                className="relative flex flex-col md:flex-row items-start gap-6 md:gap-10"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.08 * i }}
-              >
-                <div className="hidden md:flex md:w-1/2 md:justify-end md:pr-10">
-                  {i % 2 === 0 && (
-                    <div className="text-right">
-                      <h3 className="text-lg font-semibold text-white">{exp.title}</h3>
-                      <p className="text-sm text-[var(--text-secondary)]">{exp.org}</p>
-                      <p className="text-xs text-blue-400 mt-1">{exp.period}{exp.detail ? ` · ${exp.detail}` : ""}</p>
-                    </div>
+        <div className="max-w-3xl">
+          {timeline.map((item, i) => (
+            <motion.div
+              key={item.title}
+              className="grid grid-cols-1 md:grid-cols-[120px_1fr] gap-4 md:gap-8 py-8 border-b border-[var(--blue-dim)]"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.06 * i }}
+            >
+              <span className="text-[var(--text-faint)] text-sm font-mono">
+                {item.period}
+              </span>
+              <div>
+                <h3 className="text-white font-medium text-lg">{item.title}</h3>
+                <p className="text-[var(--text-dim)] text-sm mt-1">
+                  {item.org}
+                  {item.detail && (
+                    <span className="text-[var(--text-faint)]"> · {item.detail}</span>
                   )}
-                </div>
-
-                <div className="relative z-10 flex-shrink-0 mt-1 md:mt-0">
-                  <div className="timeline-node" />
-                </div>
-
-                <div className="flex-1 md:w-1/2 md:pl-10">
-                  {i % 2 !== 0 ? (
-                    <div>
-                      <h3 className="text-lg font-semibold text-white">{exp.title}</h3>
-                      <p className="text-sm text-[var(--text-secondary)]">{exp.org}</p>
-                      <p className="text-xs text-blue-400 mt-1">{exp.period}{exp.detail ? ` · ${exp.detail}` : ""}</p>
-                      <p className="text-sm text-[var(--text-secondary)] mt-2 leading-relaxed">{exp.description}</p>
-                    </div>
-                  ) : (
-                    <div className="md:hidden">
-                      <h3 className="text-lg font-semibold text-white">{exp.title}</h3>
-                      <p className="text-sm text-[var(--text-secondary)]">{exp.org}</p>
-                      <p className="text-xs text-blue-400 mt-1">{exp.period}{exp.detail ? ` · ${exp.detail}` : ""}</p>
-                      <p className="text-sm text-[var(--text-secondary)] mt-2 leading-relaxed">{exp.description}</p>
-                    </div>
-                  )}
-                  {i % 2 !== 0 && (
-                    <p className="text-sm text-[var(--text-secondary)] mt-2 leading-relaxed md:hidden">{exp.description}</p>
-                  )}
-                  {i % 2 === 0 && (
-                    <p className="text-sm text-[var(--text-secondary)] mt-2 leading-relaxed hidden md:block">{exp.description}</p>
-                  )}
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

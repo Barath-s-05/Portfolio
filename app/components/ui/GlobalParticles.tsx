@@ -29,14 +29,14 @@ export default function GlobalParticles() {
 
     const createParticles = () => {
       particles = [];
-      const count = Math.min(35, Math.floor(window.innerWidth / 40));
+      const count = Math.min(25, Math.floor(window.innerWidth / 50));
       for (let i = 0; i < count; i++) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          radius: Math.random() * 1.2 + 0.3,
-          speed: Math.random() * 0.15 + 0.05,
-          opacity: Math.random() * 0.3 + 0.1,
+          radius: Math.random() * 0.8 + 0.2,
+          speed: Math.random() * 0.08 + 0.02,
+          opacity: Math.random() * 0.15 + 0.05,
         });
       }
     };
@@ -58,13 +58,15 @@ export default function GlobalParticles() {
     createParticles();
     animate();
 
-    window.addEventListener("resize", () => {
+    const onResize = () => {
       resize();
       createParticles();
-    });
+    };
+    window.addEventListener("resize", onResize);
 
     return () => {
       cancelAnimationFrame(animationFrameId);
+      window.removeEventListener("resize", onResize);
     };
   }, []);
 

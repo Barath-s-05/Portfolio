@@ -7,13 +7,13 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 
 export const metadata: Metadata = {
   title: "Barath — Developer Portfolio",
-  description: "Developer & Problem Solver — Building intelligent, full-stack digital experiences.",
+  description: "Developer crafting intelligent systems — from ML pipelines to real-time dashboards.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-cinematic`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
       </body>
     </html>

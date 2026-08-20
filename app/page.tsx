@@ -15,26 +15,26 @@ import GlobalParticles from "@/app/components/ui/GlobalParticles";
 
 const HomePage = () => {
   return (
-    <div className="min-h-screen relative z-10 overflow-hidden">
+    <div className="min-h-screen relative z-10">
       <GlobalParticles />
       <CustomCursor />
       <Header />
 
       <main>
         <Hero />
-        <div className="section-divider" />
+        <div className="divider" />
         <SelectedWork />
-        <div className="section-divider" />
+        <div className="divider" />
         <About />
-        <div className="section-divider" />
+        <div className="divider" />
         <TechStack />
-        <div className="section-divider" />
+        <div className="divider" />
         <CaseStudies />
-        <div className="section-divider" />
+        <div className="divider" />
         <Experience />
-        <div className="section-divider" />
+        <div className="divider" />
         <Achievements />
-        <div className="section-divider" />
+        <div className="divider" />
         <Contact />
       </main>
 
