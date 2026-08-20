@@ -9,6 +9,9 @@ const CustomCursor = () => {
   const [hovering, setHovering] = useState(false);
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if ("ontouchstart" in window) return;
+
     const down = () => setClicked(true);
     const up = () => setClicked(false);
     const over = (e: Event) => {
@@ -27,34 +30,43 @@ const CustomCursor = () => {
     };
   }, []);
 
+  if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return null;
+  }
+  if (typeof window !== "undefined" && "ontouchstart" in window) {
+    return null;
+  }
+
   return (
     <>
       <div
-        className="fixed top-0 left-0 pointer-events-none z-[100] transition-transform duration-75 ease-out"
+        className="fixed top-0 left-0 pointer-events-none transition-transform duration-75 ease-out"
         style={{
-          transform: `translate(${x - 3}px, ${y - 3}px) scale(${clicked ? 0.6 : hovering ? 1.4 : 1})`,
+          zIndex: 100,
+          transform: `translate(${x - 3}px, ${y - 3}px) scale(${clicked ? 0.5 : hovering ? 1.5 : 1})`,
         }}
       >
         <div
           className="w-1.5 h-1.5 rounded-full"
           style={{
-            background: "#60a5fa",
+            background: "var(--blue-highlight)",
             boxShadow: hovering
-              ? "0 0 10px 2px rgba(96,165,250,0.6)"
-              : "0 0 6px 1px rgba(96,165,250,0.3)",
+              ? "0 0 8px 2px rgba(96,165,250,0.5)"
+              : "0 0 4px 1px rgba(96,165,250,0.2)",
           }}
         />
       </div>
       <div
-        className="fixed top-0 left-0 pointer-events-none z-[99] transition-all duration-200 ease-out"
+        className="fixed top-0 left-0 pointer-events-none transition-all duration-200 ease-out"
         style={{
-          transform: `translate(${x - 14}px, ${y - 14}px) scale(${hovering ? 1.4 : 1})`,
-          opacity: hovering ? 0.4 : 0.15,
+          zIndex: 99,
+          transform: `translate(${x - 12}px, ${y - 12}px) scale(${hovering ? 1.5 : 1})`,
+          opacity: hovering ? 0.35 : 0.12,
         }}
       >
         <div
-          className="w-7 h-7 rounded-full"
-          style={{ border: "1px solid rgba(96,165,250,0.25)" }}
+          className="w-6 h-6 rounded-full"
+          style={{ border: "1px solid rgba(96,165,250,0.2)" }}
         />
       </div>
     </>

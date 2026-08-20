@@ -6,39 +6,39 @@ import { useRef } from "react";
 const projects = [
   {
     num: "01",
-    title: "Disease Detection",
-    subtitle: "ML-Powered Diagnosis",
-    description: "Symptom-based disease detection system. Trained ML models served through a Flask API with a React frontend for real-time predictions.",
-    tech: ["Python", "Scikit-learn", "Flask", "React"],
-    github: "https://github.com/Barath-s-05/DiseaseDetection",
-    live: "https://disease-detection-rho.vercel.app/",
+    title: "ClaimCheck",
+    subtitle: "Explainable Hallucination Detection",
+    description: "AI-powered Chrome extension that detects and verifies factual claims in LLM-generated content using claim-level hallucination detection.",
+    tech: ["Python", "FastAPI", "Chrome MV3", "Ollama", "Hugging Face"],
+    github: "https://github.com/Barath-s-05",
+    live: "",
   },
   {
     num: "02",
-    title: "IntelliMon",
-    subtitle: "System Monitoring",
-    description: "Real-time system monitoring dashboard with live metrics, WebSocket streaming, and animated chart visualizations.",
-    tech: ["React", "Node.js", "Socket.io", "Chart.js"],
-    github: "https://github.com/Barath-s-05/IntelliMon",
-    live: "https://intellimon.vercel.app/",
+    title: "DevFlow",
+    subtitle: "DevOps Monitoring & Orchestration",
+    description: "Cloud-native platform for automated deployment, monitoring, and management of microservices on Kubernetes with CI/CD and real-time observability.",
+    tech: ["React", "Node.js", "Docker", "Kubernetes", "Jenkins", "Prometheus"],
+    github: "https://github.com/Barath-s-05",
+    live: "",
   },
   {
     num: "03",
-    title: "CapyCares",
-    subtitle: "Mental Wellness",
-    description: "Mental wellness app for emotional support, mood tracking, and self-care. Calming interface, meaningful interactions.",
-    tech: ["React", "Node.js", "MongoDB", "Express"],
-    github: "https://github.com/Barath-s-05/CapyCares",
-    live: "https://capy-cares.vercel.app/",
+    title: "PCOSense AI",
+    subtitle: "AI-Powered Healthcare Assistant",
+    description: "Intelligent conversational assistant for PCOS awareness with session memory, voice interaction, OCR-based medical report analysis, and explainable AI responses.",
+    tech: ["Next.js", "FastAPI", "Firebase", "OpenAI", "Tesseract OCR"],
+    github: "https://github.com/Barath-s-05",
+    live: "",
   },
   {
     num: "04",
-    title: "Credit Fraud Detection",
-    subtitle: "ML Fraud Analysis",
-    description: "Fraudulent transaction detection using data preprocessing, feature engineering, and classification models on financial data.",
-    tech: ["Python", "Pandas", "Scikit-learn"],
-    github: "https://github.com/Barath-s-05/Credit-Fraud-Detection",
-    live: "",
+    title: "IntelliMon",
+    subtitle: "Real-Time System Monitoring",
+    description: "Real-time system monitoring dashboard with live metrics visualization, WebSocket streaming, and performance tracking.",
+    tech: ["React", "Node.js", "Socket.io", "Chart.js", "Express"],
+    github: "https://github.com/Barath-s-05/IntelliMon",
+    live: "https://intellimon.vercel.app/",
   },
 ];
 
@@ -54,57 +54,52 @@ const ProjectBlock = ({
     target: ref,
     offset: ["start end", "end start"],
   });
-  const visualY = useTransform(scrollYProgress, [0, 1], [40, -40]);
+  const visualY = useTransform(scrollYProgress, [0, 1], [30, -30]);
+  const borderStyle = index < projects.length - 1 ? "1px solid rgba(30,41,59,0.4)" : "none";
 
   return (
-    <div ref={ref} className="project-full">
-      <div className="container-editorial">
-        <div className={`project-full-inner ${index % 2 !== 0 ? "reverse" : ""}`}>
-          <motion.div
-            className="project-visual"
-            style={{ y: visualY }}
-          >
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="display-lg text-[var(--blue-dim)]" style={{ fontSize: "clamp(4rem, 8vw, 8rem)" }}>
+    <div ref={ref} className="section-gap" style={{ borderBottom: borderStyle }}>
+      <div className="container">
+        <div className={`project-spread ${index % 2 !== 0 ? "reverse" : ""}`}>
+          <motion.div className="project-visual" style={{ y: visualY }}>
+            <div className="absolute inset-0 flex items-center justify-center z-10">
+              <span
+                className="mono font-bold"
+                style={{
+                  fontSize: "clamp(3rem, 6vw, 6rem)",
+                  color: "rgba(30, 41, 59, 0.5)",
+                }}
+              >
                 {project.num}
               </span>
             </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-transparent to-transparent opacity-60" />
           </motion.div>
 
-          <div className="project-info">
-            <span className="project-number">{project.num}</span>
+          <div className="project-content">
+            <span className="mono text-[0.7rem] tracking-[0.1em]" style={{ color: "var(--text-muted)" }}>
+              {project.num}
+            </span>
             <div>
               <h3 className="display-md text-white">{project.title}</h3>
               <p className="label mt-2">{project.subtitle}</p>
             </div>
-            <p className="body-lg max-w-md">{project.description}</p>
-            <ul className="tech-inline">
+            <p className="body-sm max-w-md">{project.description}</p>
+            <div className="flex flex-wrap gap-x-0 gap-y-1">
               {project.tech.map((t) => (
-                <li key={t}>{t}</li>
+                <span key={t} className="tech-tag">{t}</span>
               ))}
-            </ul>
-            <div className="flex items-center gap-6 mt-2">
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link-arrow"
-              >
-                Code
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            </div>
+            <div className="flex items-center gap-6 mt-1">
+              <a href={project.github} target="_blank" rel="noopener noreferrer" className="link-cta">
+                VIEW CODE
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M7 17L17 7M17 7H7M17 7v10" />
                 </svg>
               </a>
               {project.live && (
-                <a
-                  href={project.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-arrow"
-                >
-                  Live
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <a href={project.live} target="_blank" rel="noopener noreferrer" className="link-cta">
+                  LIVE PROJECT
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M7 17L17 7M17 7H7M17 7v10" />
                   </svg>
                 </a>
@@ -113,7 +108,6 @@ const ProjectBlock = ({
           </div>
         </div>
       </div>
-      {index < projects.length - 1 && <div className="divider" />}
     </div>
   );
 };
@@ -121,14 +115,17 @@ const ProjectBlock = ({
 const SelectedWork = () => {
   return (
     <section id="work" className="relative">
-      <div className="container-editorial pt-24 pb-12">
+      <div className="container" style={{ paddingTop: "clamp(4rem, 8vh, 8rem)" }}>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.4 }}
+          className="mb-4"
         >
-          <span className="label">Selected Work</span>
+          <span className="mono text-[0.7rem] tracking-[0.15em] uppercase" style={{ color: "var(--text-muted)" }}>
+            01 / Selected Work
+          </span>
         </motion.div>
       </div>
 

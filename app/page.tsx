@@ -15,7 +15,7 @@ import GlobalParticles from "@/app/components/ui/GlobalParticles";
 
 const HomePage = () => {
   return (
-    <div className="min-h-screen relative z-10">
+    <div className="min-h-screen relative" style={{ zIndex: 10 }}>
       <GlobalParticles />
       <CustomCursor />
       <Header />

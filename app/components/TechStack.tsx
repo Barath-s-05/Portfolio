@@ -2,67 +2,73 @@
 
 import { motion } from "framer-motion";
 
-const technologies = [
-  "Python",
-  "React",
-  "Next.js",
-  "Node.js",
-  "TypeScript",
-  "FastAPI",
-  "Flask",
-  "MongoDB",
-  "Docker",
-  "Git",
-  "Tailwind CSS",
-  "Scikit-learn",
-  "Pandas",
-  "Socket.io",
-  "Chart.js",
-  "Express",
+const groups = [
+  {
+    category: "Languages",
+    items: ["Python", "JavaScript", "SQL", "C", "Java"],
+  },
+  {
+    category: "Frontend",
+    items: ["React", "Next.js", "HTML", "CSS", "Tailwind CSS"],
+  },
+  {
+    category: "Backend",
+    items: ["FastAPI", "Node.js", "Express", "Flask", "Streamlit"],
+  },
+  {
+    category: "Data / AI",
+    items: ["TensorFlow", "Scikit-learn", "Pandas", "NumPy", "OpenCV", "Ollama"],
+  },
+  {
+    category: "Databases",
+    items: ["MongoDB", "MySQL", "PostgreSQL", "Firebase"],
+  },
+  {
+    category: "Tools / DevOps",
+    items: ["Git", "GitHub", "GitHub Actions", "Docker", "Kubernetes", "Jenkins", "Terraform"],
+  },
 ];
 
 const TechStack = () => {
   return (
-    <section id="stack" className="section-spaced">
-      <div className="container-editorial">
+    <section id="stack" className="section-gap">
+      <div className="container">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.4 }}
           className="mb-16"
         >
-          <span className="label mb-4 block">Tech Stack</span>
-          <h2 className="display-md text-white max-w-lg">
-            Tools of the trade.
-          </h2>
+          <span className="mono text-[0.7rem] tracking-[0.15em] uppercase" style={{ color: "var(--text-muted)" }}>
+            03 / Stack
+          </span>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <div className="flex flex-wrap gap-x-10 gap-y-4">
-            {technologies.map((tech, i) => (
-              <motion.span
-                key={tech}
-                className="text-[var(--text-faint)] hover:text-[var(--text)] transition-colors duration-300 cursor-none"
-                style={{
-                  fontSize: "clamp(1rem, 2vw, 1.5rem)",
-                  fontWeight: 300,
-                }}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: 0.02 * i }}
-              >
-                {tech}
-              </motion.span>
-            ))}
-          </div>
-        </motion.div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-10">
+          {groups.map((group, i) => (
+            <motion.div
+              key={group.category}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.06 * i }}
+            >
+              <p className="label mb-4">{group.category}</p>
+              <div className="flex flex-wrap gap-x-1 gap-y-2">
+                {group.items.map((item, j) => (
+                  <span
+                    key={item}
+                    className="text-sm"
+                    style={{ color: j === 0 ? "var(--text-secondary)" : "var(--text-muted)" }}
+                  >
+                    {item}{j < group.items.length - 1 ? <span style={{ color: "rgba(100,116,139,0.3)", margin: "0 0.35rem" }}>·</span> : ""}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

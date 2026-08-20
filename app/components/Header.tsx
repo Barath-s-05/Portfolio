@@ -8,7 +8,7 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80);
+    const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -26,26 +26,32 @@ const Header = () => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-          scrolled ? "bg-[rgba(6,6,10,0.9)] backdrop-blur-xl" : ""
-        }`}
+        className="fixed top-0 left-0 w-full z-50 transition-all duration-500"
+        style={{
+          background: scrolled ? "rgba(10,10,15,0.92)" : "transparent",
+          backdropFilter: scrolled ? "blur(20px)" : "none",
+          WebkitBackdropFilter: scrolled ? "blur(20px)" : "none",
+        }}
       >
-        <div className="container-editorial flex items-center justify-between py-5">
+        <div className="container flex items-center justify-between" style={{ height: "64px" }}>
           <motion.a
             href="#"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-lg font-bold tracking-tight text-white"
+            className="text-base font-bold tracking-tight text-white"
           >
-            B<span className="text-[var(--blue)]">.</span>
+            BARATH<span style={{ color: "var(--blue)" }}>.</span>
           </motion.a>
 
-          <nav className="hidden md:flex items-center gap-2">
+          <nav className="hidden md:flex items-center gap-1">
             {links.map((link, i) => (
               <motion.a
                 key={link.name}
                 href={link.href}
-                className="px-3 py-2 text-[13px] text-[var(--text-faint)] hover:text-white transition-colors duration-300"
+                className="px-3 py-2 text-[12px] font-medium tracking-wider uppercase transition-colors duration-300"
+                style={{ color: "var(--text-muted)" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-muted)")}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.05 * i }}
@@ -57,7 +63,19 @@ const Header = () => {
               href={resumeLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-3 px-4 py-2 text-[13px] text-[var(--blue)] border border-[var(--blue-dim)] hover:bg-[var(--blue-dim)] transition-all duration-300"
+              className="ml-3 px-4 py-2 text-[12px] font-medium tracking-wider uppercase transition-all duration-300"
+              style={{
+                color: "var(--blue)",
+                border: "1px solid rgba(59,130,246,0.2)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(59,130,246,0.08)";
+                e.currentTarget.style.borderColor = "rgba(59,130,246,0.4)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "transparent";
+                e.currentTarget.style.borderColor = "rgba(59,130,246,0.2)";
+              }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
@@ -67,7 +85,8 @@ const Header = () => {
           </nav>
 
           <button
-            className="md:hidden text-[var(--text-faint)] hover:text-white transition-colors cursor-none"
+            className="md:hidden transition-colors duration-300 cursor-none"
+            style={{ color: "var(--text-muted)" }}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
@@ -85,14 +104,16 @@ const Header = () => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="md:hidden bg-[rgba(6,6,10,0.98)] backdrop-blur-xl border-t border-[var(--blue-dim)]"
+            className="md:hidden"
+            style={{ background: "rgba(10,10,15,0.98)", backdropFilter: "blur(20px)", borderTop: "1px solid rgba(30,41,59,0.5)" }}
           >
-            <div className="container-editorial flex flex-col py-6 gap-1">
+            <div className="container flex flex-col py-6 gap-1">
               {links.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="py-3 text-[var(--text-dim)] hover:text-white transition-colors"
+                  className="py-3 text-sm transition-colors"
+                  style={{ color: "var(--text-secondary)" }}
                   onClick={() => setMenuOpen(false)}
                 >
                   {link.name}
@@ -102,7 +123,8 @@ const Header = () => {
                 href={resumeLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="py-3 text-[var(--blue)] border-t border-[var(--blue-dim)] mt-3"
+                className="py-3 text-sm mt-2"
+                style={{ color: "var(--blue)", borderTop: "1px solid rgba(30,41,59,0.5)" }}
                 onClick={() => setMenuOpen(false)}
               >
                 Resume
@@ -113,10 +135,11 @@ const Header = () => {
       </header>
 
       <motion.button
-        className="fixed bottom-8 right-8 w-10 h-10 flex items-center justify-center text-[var(--text-faint)] hover:text-white z-40 opacity-0 pointer-events-none transition-all duration-300"
-        style={{ pointerEvents: scrolled ? "auto" : "none", opacity: scrolled ? 1 : 0 }}
+        className="fixed bottom-8 right-8 w-10 h-10 flex items-center justify-center z-40 opacity-0 pointer-events-none transition-all duration-300"
+        style={{ color: "var(--text-muted)" }}
+        animate={{ opacity: scrolled ? 0.6 : 0, pointerEvents: scrolled ? "auto" : "none" }}
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        whileHover={{ y: -2 }}
+        whileHover={{ y: -2, opacity: 1 }}
         aria-label="Back to top"
       >
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

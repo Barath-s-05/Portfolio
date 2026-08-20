@@ -7,7 +7,7 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 
 export const metadata: Metadata = {
   title: "Barath — Developer Portfolio",
-  description: "Developer crafting intelligent systems — from ML pipelines to real-time dashboards.",
+  description: "Developer crafting intelligent systems — from ML pipelines to real-time dashboards. Full-stack, AI, and data science.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
