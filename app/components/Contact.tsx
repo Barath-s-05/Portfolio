@@ -43,108 +43,141 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="section-gap relative">
-      <div
-        className="ambient-glow"
-        style={{
-          width: "600px",
-          height: "600px",
-          top: "20%",
-          left: "30%",
-          background: "radial-gradient(circle, rgba(59,130,246,0.04) 0%, transparent 70%)",
-        }}
-      />
+    <section id="contact" className="bg-contact relative" style={{ padding: "clamp(8rem, 18vh, 16rem) 0 clamp(6rem, 12vh, 10rem)" }}>
+      <div className="glow" style={{ width: "600px", height: "600px", top: "30%", left: "25%", background: "radial-gradient(circle, rgba(59,130,246,0.04) 0%, transparent 60%)" }} />
 
-      <div className="container-narrow relative z-10">
-        <div className="text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="mono text-[0.7rem] tracking-[0.15em] uppercase block mb-6" style={{ color: "var(--text-muted)" }}>
-              06 / Let&apos;s Connect
-            </span>
-            <h2 className="display-lg text-white mb-4">
-              Have an idea?
-            </h2>
-            <h2 className="display-lg mb-8" style={{ color: "var(--blue)" }}>
-              Let&apos;s build it.
-            </h2>
-          </motion.div>
+      <div className="wrap-narrow relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-16"
+        >
+          <span className="t-label block mb-8">Let&apos;s Connect</span>
+          <h2 className="t-heading text-white mb-2">Have an idea?</h2>
+          <h2 className="t-heading" style={{ color: "var(--blue)" }}>Let&apos;s talk.</h2>
+        </motion.div>
 
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          {/* Form */}
           <motion.form
             onSubmit={handleSubmit}
-            className="text-left max-w-md mx-auto mb-16"
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.15 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
           >
-            <input
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              placeholder="Your Name"
-              className="input-line"
-            />
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              placeholder="Your Email"
-              className="input-line"
-            />
-            <textarea
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              required
-              rows={3}
-              placeholder="Message"
-              className="input-line mb-8"
-            />
+            <div className="mb-6">
+              <label className="t-label mb-3 block" style={{ fontSize: "0.55rem" }}>Name</label>
+              <input
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                placeholder="Your name"
+                className="field"
+              />
+            </div>
+            <div className="mb-6">
+              <label className="t-label mb-3 block" style={{ fontSize: "0.55rem" }}>Email</label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                placeholder="your@email.com"
+                className="field"
+              />
+            </div>
+            <div className="mb-8">
+              <label className="t-label mb-3 block" style={{ fontSize: "0.55rem" }}>Message</label>
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                rows={4}
+                placeholder="Tell me about your project..."
+                className="field"
+              />
+            </div>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3.5 text-sm font-medium tracking-wider text-white transition-all duration-300 cursor-none"
+              className="arrow-link w-full justify-center py-4 text-center"
               style={{
                 background: "var(--blue)",
+                color: "white",
+                fontSize: "0.75rem",
+                letterSpacing: "0.12em",
+                fontWeight: 600,
                 border: "none",
+                cursor: "none",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = "var(--blue-highlight)")}
+              onMouseEnter={(e) => (e.currentTarget.style.background = "var(--blue-soft)")}
               onMouseLeave={(e) => (e.currentTarget.style.background = "var(--blue)")}
             >
               {isSubmitting ? "SENDING..." : status === "success" ? "SENT." : "SEND MESSAGE"}
             </button>
           </motion.form>
 
+          {/* Direct Contact */}
           <motion.div
-            className="flex justify-center gap-6"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.2 }}
+            transition={{ duration: 0.4, delay: 0.15 }}
+            className="flex flex-col justify-between"
           >
-            {socials.map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center transition-colors duration-300 cursor-none"
-                style={{ color: "var(--text-muted)" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--blue-highlight)")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-muted)")}
-                aria-label={s.label}
-              >
-                {s.icon}
-              </a>
-            ))}
+            <div className="space-y-8">
+              <div>
+                <p className="t-label mb-2">Email</p>
+                <a href="mailto:barathsr05@gmail.com" className="arrow-link" style={{ fontSize: "0.85rem" }}>
+                  barathsr05@gmail.com
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M7 17L17 7M17 7H7M17 7v10" />
+                  </svg>
+                </a>
+              </div>
+              <div>
+                <p className="t-label mb-2">GitHub</p>
+                <a href="https://github.com/Barath-s-05" target="_blank" rel="noopener noreferrer" className="arrow-link" style={{ fontSize: "0.85rem" }}>
+                  github.com/Barath-s-05
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M7 17L17 7M17 7H7M17 7v10" />
+                  </svg>
+                </a>
+              </div>
+              <div>
+                <p className="t-label mb-2">LinkedIn</p>
+                <a href="https://www.linkedin.com/in/barath-s05" target="_blank" rel="noopener noreferrer" className="arrow-link" style={{ fontSize: "0.85rem" }}>
+                  linkedin.com/in/barath-s05
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M7 17L17 7M17 7H7M17 7v10" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-5 mt-12 lg:mt-0">
+              {socials.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors duration-300 cursor-none"
+                  style={{ color: "var(--text-muted)", fontSize: "1.1rem" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--blue-soft)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-muted)")}
+                  aria-label={s.label}
+                >
+                  {s.icon}
+                </a>
+              ))}
+            </div>
           </motion.div>
         </div>
       </div>

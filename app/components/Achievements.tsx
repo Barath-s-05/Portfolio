@@ -3,10 +3,10 @@
 import { motion } from "framer-motion";
 
 const stats = [
-  { number: "3", label: "Projects Shipped" },
-  { number: "2", label: "Patents Filed" },
+  { number: "4+", label: "Projects" },
   { number: "5+", label: "Hackathons" },
-  { number: "2", label: "Internships" },
+  { number: "2", label: "Patents" },
+  { number: "8.5", label: "GPA" },
 ];
 
 const categories = [
@@ -34,21 +34,10 @@ const categories = [
   },
 ];
 
-const Achievements = () => {
+const Recognition = () => {
   return (
-    <section id="achievements" className="section-gap relative">
-      <div
-        className="ambient-glow"
-        style={{
-          width: "500px",
-          height: "500px",
-          bottom: "0%",
-          right: "-5%",
-          background: "radial-gradient(circle, rgba(59,130,246,0.03) 0%, transparent 70%)",
-        }}
-      />
-
-      <div className="container">
+    <section id="recognition" style={{ padding: "clamp(6rem, 14vh, 12rem) 0" }}>
+      <div className="wrap">
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -56,40 +45,38 @@ const Achievements = () => {
           transition={{ duration: 0.4 }}
           className="mb-12"
         >
-          <span className="mono text-[0.7rem] tracking-[0.15em] uppercase" style={{ color: "var(--text-muted)" }}>
-            Achievements
-          </span>
+          <span className="t-label">Recognition</span>
         </motion.div>
 
-        <div className="stat-row mb-16">
+        <div className="stats mb-16">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
-              className="stat-item"
-              initial={{ opacity: 0, y: 15 }}
+              className="stat"
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.35, delay: 0.08 * i }}
+              transition={{ duration: 0.3, delay: 0.06 * i }}
             >
-              <span className="display-lg text-white">{stat.number}</span>
-              <p className="text-sm mt-2" style={{ color: "var(--text-muted)" }}>{stat.label}</p>
+              <span className="t-heading text-white">{stat.number}</span>
+              <p className="text-sm mt-1.5" style={{ color: "var(--text-muted)" }}>{stat.label}</p>
             </motion.div>
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {categories.map((cat, i) => (
             <motion.div
               key={cat.title}
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.35, delay: 0.08 * i }}
+              transition={{ duration: 0.3, delay: 0.06 * i }}
             >
-              <p className="label mb-4">{cat.title}</p>
+              <p className="t-label mb-4">{cat.title}</p>
               <ul className="space-y-3">
                 {cat.items.map((item) => (
-                  <li key={item} className="body-sm flex items-start gap-2.5">
+                  <li key={item} className="t-small flex items-start gap-2.5" style={{ fontSize: "0.8rem" }}>
                     <span className="w-1 h-1 rounded-full mt-2 flex-shrink-0" style={{ background: "var(--blue)" }} />
                     {item}
                   </li>
@@ -103,4 +90,4 @@ const Achievements = () => {
   );
 };
 
-export default Achievements;
+export default Recognition;

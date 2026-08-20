@@ -5,9 +5,8 @@ import Hero from "@/app/components/Hero";
 import SelectedWork from "@/app/components/SelectedWork";
 import About from "@/app/components/About";
 import TechStack from "@/app/components/TechStack";
-import CaseStudies from "@/app/components/CaseStudies";
 import Experience from "@/app/components/Experience";
-import Achievements from "@/app/components/Achievements";
+import Recognition from "@/app/components/Achievements";
 import Contact from "@/app/components/Contact";
 import Footer from "@/app/components/ui/Footer";
 import CustomCursor from "@/app/components/ui/CustomCursor";
@@ -15,26 +14,23 @@ import GlobalParticles from "@/app/components/ui/GlobalParticles";
 
 const HomePage = () => {
   return (
-    <div className="min-h-screen relative" style={{ zIndex: 10 }}>
+    <div className="grain" style={{ position: "relative", zIndex: 1 }}>
       <GlobalParticles />
       <CustomCursor />
       <Header />
 
       <main>
         <Hero />
-        <div className="divider" />
         <SelectedWork />
-        <div className="divider" />
+        <div className="sep" />
         <About />
-        <div className="divider" />
+        <div className="sep" />
         <TechStack />
-        <div className="divider" />
-        <CaseStudies />
-        <div className="divider" />
+        <div className="sep" />
         <Experience />
-        <div className="divider" />
-        <Achievements />
-        <div className="divider" />
+        <div className="sep" />
+        <Recognition />
+        <div className="sep" />
         <Contact />
       </main>
 
