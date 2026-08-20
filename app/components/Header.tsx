@@ -37,7 +37,7 @@ const Header = () => {
     { name: "Contact", href: "#contact" },
   ];
 
-  const resumeLink = "https://drive.google.com/file/d/19TNIgHih9zJ8p3emPWdJ6IoprOFuHbRw/view?usp=sharing";
+  const resumeLink = "https://drive.google.com/file/d/1-wIsbo7c-GtJpeuTaT5KE_WXhhoLY9Df/view?usp=sharing";
 
  // Link to the resume page
 
