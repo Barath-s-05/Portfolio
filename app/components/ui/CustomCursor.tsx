@@ -11,18 +11,15 @@ const CustomCursor = () => {
   useEffect(() => {
     const handleMouseDown = () => setClicked(true);
     const handleMouseUp = () => setClicked(false);
-
     const handleMouseOver = (e: Event) => {
       if (e.target instanceof HTMLElement) {
-        const isClickable = e.target.closest("a, button, input, textarea, [role='button']");
-        setHovering(!!isClickable);
+        setHovering(!!e.target.closest("a, button, input, textarea, [role='button']"));
       }
     };
 
     document.addEventListener("mousedown", handleMouseDown);
     document.addEventListener("mouseup", handleMouseUp);
     document.addEventListener("mouseover", handleMouseOver);
-
     return () => {
       document.removeEventListener("mousedown", handleMouseDown);
       document.removeEventListener("mouseup", handleMouseUp);
@@ -32,37 +29,33 @@ const CustomCursor = () => {
 
   return (
     <>
-      {/* Main Cursor Dot */}
       <div
-        className="fixed top-0 left-0 pointer-events-none z-50 transition-transform duration-150 ease-out"
+        className="fixed top-0 left-0 pointer-events-none z-[100] transition-transform duration-100 ease-out"
         style={{
-          transform: `translate(${x - 6}px, ${y - 6}px) scale(${clicked ? 0.6 : hovering ? 1.6 : 1})`,
+          transform: `translate(${x - 4}px, ${y - 4}px) scale(${clicked ? 0.7 : hovering ? 1.3 : 1})`,
         }}
       >
         <div
-          className="w-3 h-3 rounded-full"
+          className="w-2 h-2 rounded-full"
           style={{
-            background: hovering ? "#00ffff" : "#00eeff",
+            background: "#60a5fa",
             boxShadow: hovering
-              ? "0 0 20px 6px rgba(0,255,255,0.9)"
-              : "0 0 12px 4px rgba(0,238,255,0.7)",
+              ? "0 0 12px 3px rgba(96,165,250,0.7)"
+              : "0 0 8px 2px rgba(96,165,250,0.4)",
           }}
         />
       </div>
-
-      {/* Outer Glow Ring */}
       <div
-        className="fixed top-0 left-0 pointer-events-none z-40 transition-all duration-300 ease-out"
+        className="fixed top-0 left-0 pointer-events-none z-[99] transition-all duration-200 ease-out"
         style={{
-          transform: `translate(${x - 20}px, ${y - 20}px) scale(${hovering ? 1.2 : 1})`,
-          opacity: hovering ? 0.7 : 0.4,
+          transform: `translate(${x - 16}px, ${y - 16}px) scale(${hovering ? 1.3 : 1})`,
+          opacity: hovering ? 0.5 : 0.25,
         }}
       >
         <div
-          className="w-10 h-10 rounded-full"
+          className="w-8 h-8 rounded-full"
           style={{
-            border: "1px solid rgba(0,238,255,0.4)",
-            boxShadow: "0 0 30px rgba(0,150,255,0.6)",
+            border: "1px solid rgba(96,165,250,0.3)",
           }}
         />
       </div>

@@ -2,102 +2,127 @@
 
 import { motion } from "framer-motion";
 
-const Experience = () => {
-  const experiences = [
-    {
-      id: 1,
-      title: "Technical Development Journey",
-      role: "Student Tech Enthusiast",
-      period: "Present",
-      description: "Continuously learning and building projects in various technologies. Focused on modern web development, UI/UX design, and problem-solving techniques."
-    },
-    {
-      id: 2,
-      title: "Engineering & Specialization",
-      role: "CMR Institute of Technology - B.E. Computer Science (Data Science)",
-      period: "Present | GPA: 8.5",
-      description: "Currently pursuing my degree with focus on Data Science concepts, Programming and software development, Problem-solving and system design, Applying theory through real-world technical projects."
-    },
-    {
-      id: 3,
-      title: "Higher Secondary - Stream Focus",
-      role: "Adarsh Matriculation Higher Secondary School - 12th Grade",
-      period: "2023 | 91%",
-      description: "Strengthened my interest in technology and computing while developing discipline, consistency, and performance under pressure."
-    },
-    {
-      id: 4,
-      title: "Strong Academic Foundation",
-      role: "Adarsh Matriculation Higher Secondary School - 10th Grade",
-      period: "2021 | 95%",
-      description: "Built a strong base in mathematics, logical reasoning, and analytical thinking — the roots of my problem-solving mindset."
-    }
-  ];
+const experiences = [
+  {
+    title: "B.E. Computer Science (Data Science)",
+    org: "CMR Institute of Technology",
+    period: "Present",
+    detail: "GPA: 8.5",
+    description: "Focusing on Data Science, software development, and system design. Building real-world projects to apply理论 knowledge.",
+  },
+  {
+    title: "Secretary — Higher Studies Club",
+    org: "CMRIT",
+    period: "2025–26",
+    detail: "",
+    description: "Leading club initiatives, organizing career guidance sessions, and coordinating faculty-student interactions.",
+  },
+  {
+    title: "Secretary — Rare Club",
+    org: "CMRIT",
+    period: "2025–26",
+    detail: "",
+    description: "Managing club operations and driving technical and cultural events for the student community.",
+  },
+  {
+    title: "Soft Skills Lead Coordinator",
+    org: "CCA",
+    period: "2025–26",
+    detail: "",
+    description: "Coordinating communication and interpersonal skills workshops for peers across departments.",
+  },
+  {
+    title: "12th Grade",
+    org: "Adarsh Matriculation Higher Secondary School",
+    period: "2023",
+    detail: "91%",
+    description: "Strengthened interest in technology while building discipline and analytical thinking.",
+  },
+  {
+    title: "10th Grade",
+    org: "Adarsh Matriculation Higher Secondary School",
+    period: "2021",
+    detail: "95%",
+    description: "Built a strong foundation in mathematics, logic, and problem-solving.",
+  },
+];
 
+const Experience = () => {
   return (
-    <section id="experience" className="py-20 px-8 md:px-16 lg:px-32">
-      <div className="max-w-4xl mx-auto">
-        <motion.h2 
-          className="text-4xl font-bold mb-16 text-center"
-          initial={{ opacity: 0, y: -20 }}
+    <section id="experience" className="section-padding">
+      <div className="container-wide">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
+          className="mb-4"
         >
-          My <span className="neon-text">Journey</span>
-        </motion.h2>
-        
-        <div className="relative">
-          {/* Animated glowing timeline line */}
-          <motion.div
-            className="absolute left-1/2 transform -translate-x-1/2 h-full w-[3px] hidden md:block"
-            style={{
-              background: "linear-gradient(to bottom, rgba(0,238,255,0.7), rgba(0,120,255,0.5))",
-              boxShadow: "0 0 15px rgba(0,238,255,0.5)"
-            }}
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-          />
+          <span className="text-sm font-medium tracking-widest uppercase text-blue-400">
+            Experience & Leadership
+          </span>
+        </motion.div>
 
-          <div className="space-y-12">
-            {experiences.map((exp, index) => (
+        <motion.h2
+          className="section-title text-white mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          My journey so far.
+        </motion.h2>
+
+        <div className="relative max-w-3xl mx-auto">
+          <div className="timeline-line hidden md:block" />
+
+          <div className="space-y-10">
+            {experiences.map((exp, i) => (
               <motion.div
-                key={exp.id}
-                className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8`}
-                initial={{ opacity: 0, y: 40 }}
+                key={exp.title}
+                className="relative flex flex-col md:flex-row items-start gap-6 md:gap-10"
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.08 * i }}
               >
-                <div className="flex-1">
-                  <motion.div
-                    className="glass p-6 rounded-2xl border border-violet-500/20 glass-hover"
-                    whileHover={{ y: -6, boxShadow: "0 0 25px rgba(157,78,221,0.25)" }}
-                  >
+                <div className="hidden md:flex md:w-1/2 md:justify-end md:pr-10">
+                  {i % 2 === 0 && (
+                    <div className="text-right">
+                      <h3 className="text-lg font-semibold text-white">{exp.title}</h3>
+                      <p className="text-sm text-[var(--text-secondary)]">{exp.org}</p>
+                      <p className="text-xs text-blue-400 mt-1">{exp.period}{exp.detail ? ` · ${exp.detail}` : ""}</p>
+                    </div>
+                  )}
+                </div>
+
+                <div className="relative z-10 flex-shrink-0 mt-1 md:mt-0">
+                  <div className="timeline-node" />
+                </div>
+
+                <div className="flex-1 md:w-1/2 md:pl-10">
+                  {i % 2 !== 0 ? (
                     <div>
-                      <div>
-                        <h3 className="text-xl font-bold text-cyan-300">{exp.title}</h3>
-                        <p className="text-lg text-gray-300 mb-2">{exp.role}</p>
-                        <p className="text-sm text-gray-400 mb-3">{exp.period}</p>
-                        <p className="text-gray-300">{exp.description}</p>
-                      </div>
+                      <h3 className="text-lg font-semibold text-white">{exp.title}</h3>
+                      <p className="text-sm text-[var(--text-secondary)]">{exp.org}</p>
+                      <p className="text-xs text-blue-400 mt-1">{exp.period}{exp.detail ? ` · ${exp.detail}` : ""}</p>
+                      <p className="text-sm text-[var(--text-secondary)] mt-2 leading-relaxed">{exp.description}</p>
                     </div>
-                  </motion.div>
-                </div>
-                
-                {/* Glowing animated timeline node */}
-                <div className="relative z-10 flex justify-center items-center">
-                  <div className="relative flex items-center justify-center">
-                    <div className="absolute w-10 h-10 rounded-full bg-cyan-400/20 animate-ping"></div>
-                    <div className="w-6 h-6 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 shadow-[0_0_15px_rgba(0,238,255,0.7)] flex items-center justify-center">
-                      <div className="w-2 h-2 rounded-full bg-white"></div>
+                  ) : (
+                    <div className="md:hidden">
+                      <h3 className="text-lg font-semibold text-white">{exp.title}</h3>
+                      <p className="text-sm text-[var(--text-secondary)]">{exp.org}</p>
+                      <p className="text-xs text-blue-400 mt-1">{exp.period}{exp.detail ? ` · ${exp.detail}` : ""}</p>
+                      <p className="text-sm text-[var(--text-secondary)] mt-2 leading-relaxed">{exp.description}</p>
                     </div>
-                  </div>
+                  )}
+                  {i % 2 !== 0 && (
+                    <p className="text-sm text-[var(--text-secondary)] mt-2 leading-relaxed md:hidden">{exp.description}</p>
+                  )}
+                  {i % 2 === 0 && (
+                    <p className="text-sm text-[var(--text-secondary)] mt-2 leading-relaxed hidden md:block">{exp.description}</p>
+                  )}
                 </div>
-                
-                <div className="flex-1 hidden md:block"></div>
               </motion.div>
             ))}
           </div>

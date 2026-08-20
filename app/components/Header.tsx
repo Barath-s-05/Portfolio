@@ -8,178 +8,134 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [progress, setProgress] = useState(0);
 
-  // Handle scroll events for navbar and progress bar
   useEffect(() => {
     const handleScroll = () => {
-      // Navbar background on scroll
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-
-      // Progress bar calculation
+      setScrolled(window.scrollY > 50);
       const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (winScroll / height) * 100;
-      setProgress(scrolled);
+      setProgress((winScroll / height) * 100);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#" },
+    { name: "Work", href: "#work" },
     { name: "About", href: "#about" },
-    { name: "Projects", href: "#projects" },
+    { name: "Stack", href: "#stack" },
     { name: "Experience", href: "#experience" },
     { name: "Contact", href: "#contact" },
   ];
 
   const resumeLink = "https://drive.google.com/file/d/1-wIsbo7c-GtJpeuTaT5KE_WXhhoLY9Df/view?usp=sharing";
 
- // Link to the resume page
-
   return (
     <>
-      {/* Scroll Progress Bar */}
-      <div className="fixed top-0 left-0 w-full h-1 z-50">
-        <div 
-          className="h-full bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-150 ease-linear"
+      <div className="fixed top-0 left-0 w-full h-[2px] z-50">
+        <div
+          className="h-full bg-gradient-to-r from-blue-600 to-blue-400"
           style={{ width: `${progress}%` }}
-        ></div>
+        />
       </div>
 
-      {/* Header */}
-      <header 
-        className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${
-          scrolled ? "glass py-3 backdrop-blur-md" : "py-6"
+      <header
+        className={`fixed top-0 left-0 w-full z-40 transition-all duration-500 ${
+          scrolled ? "bg-[rgba(10,10,15,0.85)] backdrop-blur-xl border-b border-blue-500/5" : ""
         }`}
       >
-        <div className="container mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="text-2xl font-bold"
-            >
-              <span className="neon-text">Barath</span>
-            </motion.div>
+        <div className="container-wide flex items-center justify-between py-5 px-6 lg:px-10">
+          <motion.a
+            href="#"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-xl font-bold tracking-tight text-white"
+          >
+            B<span className="text-blue-400">.</span>
+          </motion.a>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-1">
-              {navLinks.map((link, index) => (
-                <motion.a
+          <nav className="hidden md:flex items-center gap-1">
+            {navLinks.map((link, i) => (
+              <motion.a
+                key={link.name}
+                href={link.href}
+                className="px-4 py-2 text-sm text-[var(--text-secondary)] hover:text-blue-400 transition-colors duration-300 rounded-lg"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.05 }}
+              >
+                {link.name}
+              </motion.a>
+            ))}
+            <motion.a
+              href={resumeLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-3 px-5 py-2 text-sm text-blue-400 border border-blue-500/20 rounded-lg hover:bg-blue-500/10 hover:border-blue-500/30 transition-all duration-300"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: navLinks.length * 0.05 }}
+            >
+              Resume
+            </motion.a>
+          </nav>
+
+          <button
+            className="md:hidden text-[var(--text-secondary)] hover:text-blue-400 transition-colors"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {mobileMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 8h16M4 16h16" />
+              )}
+            </svg>
+          </button>
+        </div>
+
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-[rgba(10,10,15,0.95)] backdrop-blur-xl border-t border-blue-500/5"
+          >
+            <div className="flex flex-col px-6 py-4 gap-1">
+              {navLinks.map((link) => (
+                <a
                   key={link.name}
                   href={link.href}
-                  className={`px-4 py-2 rounded-lg transition-colors ${
-                    scrolled 
-                      ? "text-gray-300 hover:text-cyan-300" 
-                      : "text-gray-300 hover:text-cyan-300"
-                  }`}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                  whileHover={{ scale: 1.05 }}
+                  className="py-3 text-[var(--text-secondary)] hover:text-blue-400 transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.name}
-                </motion.a>
+                </a>
               ))}
-              <motion.a
+              <a
                 href={resumeLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`px-4 py-2 rounded-lg transition-colors ml-2 ${
-                  scrolled 
-                    ? "glass text-gray-300 hover:text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/10" 
-                    : "glass text-gray-300 hover:text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/10"
-                }`}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: navLinks.length * 0.1 }}
-                whileHover={{ scale: 1.05 }}
+                className="py-3 text-blue-400 border-t border-blue-500/10 mt-2"
+                onClick={() => setMobileMenuOpen(false)}
               >
                 Resume
-              </motion.a>
-            </nav>
-
-            {/* Mobile Menu Button */}
-            <div className="md:hidden">
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="text-gray-300 hover:text-cyan-300 focus:outline-none"
-              >
-                <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  {mobileMenuOpen ? (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
-                  ) : (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                  )}
-                </svg>
-              </button>
+              </a>
             </div>
-          </div>
-
-          {/* Mobile Navigation */}
-          {mobileMenuOpen && (
-            <motion.nav 
-              className="md:hidden mt-4"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="flex flex-col space-y-3 py-3">
-                {navLinks.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    className="px-4 py-2 rounded-lg text-gray-300 hover:text-cyan-300 hover:bg-cyan-900/20 transition-colors"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {link.name}
-                  </a>
-                ))}
-                <a
-                  href={resumeLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-lg text-gray-300 hover:text-cyan-300 hover:bg-cyan-900/20 transition-colors flex justify-center"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Resume
-                </a>
-              </div>
-            </motion.nav>
-          )}
-        </div>
+          </motion.div>
+        )}
       </header>
 
-      {/* Back to Top Button */}
       <motion.button
-        className="fixed bottom-8 right-8 w-12 h-12 rounded-full glass border border-cyan-500/30 flex items-center justify-center text-cyan-300 z-40 opacity-0 pointer-events-none"
-        style={{ pointerEvents: progress > 20 ? "auto" : "none", opacity: progress > 20 ? 1 : 0 }}
+        className="fixed bottom-8 right-8 w-11 h-11 rounded-full bg-[rgba(30,41,59,0.6)] backdrop-blur-sm border border-blue-500/10 flex items-center justify-center text-blue-400 z-40 opacity-0 pointer-events-none"
+        style={{ pointerEvents: progress > 15 ? "auto" : "none", opacity: progress > 15 ? 1 : 0 }}
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
+        aria-label="Back to top"
       >
-        <svg
-          className="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 15l7-7 7 7"></path>
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
         </svg>
       </motion.button>
     </>

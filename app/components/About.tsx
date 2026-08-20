@@ -1,130 +1,81 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 const About = () => {
-  const [activeSkill, setActiveSkill] = useState(0);
-  
-  const skills = [
-    { 
-      name: "Frontend Development", 
-      description: "Build responsive, animated, production-ready user interfaces."
+  const capabilities = [
+    {
+      title: "Full-Stack Development",
+      description: "Building end-to-end applications with React, Node.js, and modern frameworks.",
     },
-    { 
-      name: "UI/UX Design", 
-      description: "Design intuitive layouts focused on clarity and usability."
+    {
+      title: "Machine Learning",
+      description: "Developing ML models for real-world problems — disease detection, fraud analysis, and more.",
     },
-    { 
-      name: "Problem Solving", 
-      description: "Break complex systems into scalable and efficient solutions."
+    {
+      title: "System Design",
+      description: "Architecting scalable, maintainable systems with clean code principles.",
     },
-    { 
-      name: "Programming Fundamentals", 
-      description: "Strong foundation in data structures, algorithms, and system logic."
-    }
+    {
+      title: "UI/UX Design",
+      description: "Crafting intuitive interfaces that balance aesthetics with usability.",
+    },
   ];
 
   return (
-    <section id="about" className="py-20 px-8 md:px-16 lg:px-32">
-      
-      {/* Section Fade Wrapper (glass removed) */}
-      <motion.div
-        className="max-w-6xl mx-auto"
-        initial={{ opacity: 0, x: -60 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        
-        <motion.h2 
-          className="text-4xl font-bold mb-10 text-center"
-          initial={{ opacity: 0, y: -20 }}
+    <section id="about" className="section-padding">
+      <div className="container-wide">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mb-4"
         >
-          About <span className="neon-text">Me</span>
-        </motion.h2>
-
-        {/* Centered Profile Image */}
-        <motion.div
-          className="flex justify-center mb-16"
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <div className="relative">
-            <div className="absolute inset-0 rounded-full blur-2xl bg-cyan-400/20"></div>
-
-            <div className="relative w-40 h-40 rounded-full overflow-hidden border border-cyan-400/40 shadow-[0_0_35px_rgba(0,238,255,0.35)]">
-              <Image
-                src="/profile.jpeg"
-                alt="Barath"
-                width={300}
-                height={300}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
+          <span className="text-sm font-medium tracking-widest uppercase text-blue-400">
+            What I Do
+          </span>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
-          
-          {/* Bio Card */}
-          <motion.div
-            className="glass p-8 rounded-2xl border border-cyan-500/20 relative overflow-hidden h-full flex flex-col"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-cyan-500/10 via-transparent to-blue-500/10 pointer-events-none"></div>
+        <motion.h2
+          className="section-title text-white mb-6"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          Building from concept to deployment.
+        </motion.h2>
 
-            <h3 className="text-2xl font-semibold mb-4 text-cyan-300">
-              My Story
-            </h3>
+        <motion.p
+          className="section-subtitle max-w-2xl mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+        >
+          CS student specializing in Data Science. I turn complex problems into clean,
+          functional applications — whether it&apos;s an ML pipeline or a real-time dashboard.
+        </motion.p>
 
-            <div className="flex flex-col flex-grow">
-              <p className="text-gray-300 mb-6 leading-relaxed">
-                I&apos;m a Creative Developer and Computer Science student specializing in Data Science. I enjoy building full-stack applications that combine clean design with real-world functionality — from machine learning systems to real-time monitoring dashboards.
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {capabilities.map((item, i) => (
+            <motion.div
+              key={item.title}
+              className="glass-subtle p-8 rounded-2xl hover:border-blue-500/15 transition-all duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.1 * i }}
+            >
+              <h3 className="text-lg font-semibold text-white mb-3">{item.title}</h3>
+              <p className="text-[var(--text-secondary)] text-sm leading-relaxed">
+                {item.description}
               </p>
-
-              <p className="text-gray-300 leading-relaxed">
-                My focus is on writing scalable, maintainable code and designing interfaces that feel intuitive and purposeful. I’m driven by solving complex problems and turning ideas into polished, production-ready applications.
-              </p>
-            </div>
-          </motion.div>
-          
-          {/* Skills */}
-          <div className="space-y-6">
-            {skills.map((skill, index) => (
-              <motion.div
-                key={index}
-                className="glass p-6 rounded-xl border border-violet-500/20 relative overflow-hidden"
-                onMouseEnter={() => setActiveSkill(index)}
-                initial={{ opacity: 0, x: 60 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1], delay: index * 0.15 }}
-                viewport={{ once: true, amount: 0.3 }}
-              >
-                <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-violet-500/10 via-transparent to-cyan-500/10 pointer-events-none"></div>
-
-                <h4 className="text-xl font-semibold mb-2 relative z-10">
-                  {skill.name}
-                </h4>
-
-                <p className="text-gray-400 text-sm leading-relaxed relative z-10">
-                  {skill.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-
+            </motion.div>
+          ))}
         </div>
-
-      </motion.div>
-
+      </div>
     </section>
   );
 };
