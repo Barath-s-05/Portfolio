@@ -64,33 +64,33 @@ const Experience = () => (
       </div>
 
       {/* Recognition */}
-      <div className="sep mb-14" />
-      <motion.div initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="mb-14">
+      <div className="sep" style={{ margin: "4rem 0" }} />
+      <motion.div initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} style={{ marginBottom: "3rem" }}>
         <span className="lbl">Recognition</span>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-0 mb-14" style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}>
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-0" style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", marginBottom: "4rem" }}>
         {stats.map((s, i) => (
-          <motion.div key={s.l} style={{ padding: "1.75rem", borderRight: i < 3 ? "1px solid var(--border)" : "none" }} initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: 0.06 * i }}>
+          <motion.div key={s.l} style={{ padding: "2rem 1.5rem", borderRight: i < 3 ? "1px solid var(--border)" : "none" }} initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: 0.06 * i }}>
             <span className="d-md text-white">{s.n}</span>
-            <p style={{ fontSize: "0.9rem", color: "var(--text-faint)", marginTop: "4px" }}>{s.l}</p>
+            <p style={{ fontSize: "0.9rem", color: "var(--text-faint)", marginTop: "6px" }}>{s.l}</p>
           </motion.div>
         ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: "3rem" }}>
         {[
           { cat: "Awards", items: awards },
           { cat: "Patents", items: patents },
           { cat: "Certifications", items: certs },
         ].map((section, i) => (
           <motion.div key={section.cat} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: 0.06 * i }}>
-            <p className="lbl mb-4">{section.cat}</p>
-            <ul className="space-y-3">
+            <p className="lbl mb-5">{section.cat}</p>
+            <ul style={{ display: "flex", flexDirection: "column", gap: "0.85rem" }}>
               {section.items.map((item) => (
                 <li key={item} className="flex items-start gap-2.5">
                   <span className="w-1 h-1 rounded-full mt-2 flex-shrink-0" style={{ background: "var(--blue)" }} />
-                  <span style={{ fontSize: "0.9rem", lineHeight: 1.6, color: "var(--text-dim)" }}>{item}</span>
+                  <span style={{ fontSize: "0.9rem", lineHeight: 1.65, color: "var(--text-dim)" }}>{item}</span>
                 </li>
               ))}
             </ul>
